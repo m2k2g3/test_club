@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es-co">
+<head>
+    <meta charset="UTF-8">
+    <title>Club merengue</title>
+    <link rel="stylesheet" href="../assets/css/Registro.css">
+</head>
+
+<body>
+<div class="Registronl1">
+    <h2>Registro de asociados</h2>
+
+    <form id="FormRegistro" action="" method="post">
+        <div class="grupo-input">
+            <label>Ingrese su documento</label>
+            <input id="documento" type="number" required placeholder="1234567890">
+        </div>
+
+        <div class="grupo-input">
+            <label>Nombre</label>
+            <input id="Nombre" type="text" required placeholder="Juan"> 
+        </div>
+        
+        <div class="grupo-input">
+            <label>Apellido</label>
+            <input id="Apellido" type="text" required placeholder="Pérez">
+        </div>
+
+        <div class="grupo-input">
+            <label>Fecha de nacimiento</label>
+            <input id="fechaNacimiento" type="date" required>
+        </div>
+
+        <div class="grupo-input">
+            <label>Género:</label>
+            <div style="display: flex; gap: 15px; margin-top: 5px;">
+                <label>
+                    <input id="Femenino" type="radio" name="Genero" value="Femenino">
+                    <span>Femenino</span>
+                </label>
+                
+                    <input id="Masculino" type="radio" name="Genero" value="Masculino">
+                    <label for="Masculino">Hombre</label>
+                
+                    <input id="Otro" type="radio" name="Genero" value="O">
+                    <label for="Otro">Otro</label>
+               
+            </div>
+
+
+
+        </div> 
+
+        <div class="grupo-input">
+            <label>Ciudad</label>
+            <select id="ciudad" required>
+                <option value="" disabled selected>Seleccione ciudad</option>
+                <option value="sogamoso">Sogamoso</option>
+                <option value="duitama">Duitama</option>
+                <option value="tunja">Tunja</option>
+            </select>
+        </div>
+
+        <div class="grupo-input">
+            <label>Dirección</label>
+            <input type="text" name="Direccion" id="Direccion" required>
+        </div>
+
+        <div class="grupo-input">
+            <label for="Telefono">Teléfono</label>
+            <input type="number" name="Telefono" id="Telefono" required placeholder="3124567890">
+        </div>
+
+        <div class="grupo-input">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="ejemplo@email.co">
+        </div>
+
+        <div class="grupo-botones">
+            <button type="submit">Guardar</button>
+            <button type="reset">Resetear</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

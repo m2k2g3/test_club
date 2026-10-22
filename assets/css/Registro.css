@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(84, 14, 131, 0.600);
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: url('../imagenes/1pixstudio-ai-generated-8008017_1920.jpg') ;
+}
+
+.Registronl1 {
+    width: 420px;
+    background: purple;
+    color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+}
+
+input:focus, select:focus {
+    border-color: rgb(78, 4, 50);
+    box-shadow:  0 0 0 3px rgb(137, 30, 151);
+}
+
+h2 {
+    color: rgb(220, 200, 255);
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 10px;
+}
+
+.grupo-input {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-input label {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.grupo-botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button[type="submit"] {
+    background-color: #b489b6;
+    color: purple;
+}
+
+button[type="reset"] {
+    background-color: #5c0372;
+    color: #fff;
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid rgb(42, 13, 145);
+    border-radius: 5px;
+    font-size: 15px;
+}
