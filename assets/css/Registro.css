@@ -6,12 +6,12 @@
 }
 
 body {
-    background-color: rgba(84, 14, 131, 0.600);
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+        background-color: rgba(84, 14, 131, 0.600);
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
     background: url('../imagenes/1pixstudio-ai-generated-8008017_1920.jpg') ;
 }
 
