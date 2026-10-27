@@ -1,29 +1,35 @@
 <!DOCTYPE html>
-<html lang="es-co">
+<html lang="es">
+
 <head>
-    <meta charset="utf-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Frambuesa - Iniciar Sesión</title>
+    <link rel="stylesheet" href="../assets/css/Login.css">
 </head>
 
 <body>
-    <div class="aaaaa">
-        <form action="">
-            <h1>Login</h1>
-            
+
+    <div class="login-card">
+        <h2>Iniciar Sesión</h2>
+
+        <form id="loginForm">
+
             <div class="user">
-                <input type="text" placeholder="Usuario" required>
+                <input type="email" id="usuario" required placeholder="Ingresar el Email (ejemplo@email.com)">
             </div>
 
             <div class="password">
-                <input type="password" placeholder="Password" required>
+                <input type="password" id="clave" required placeholder="Ingresar su Contraseña">
             </div>
 
-            <button type="submit" class="btn">Login</button>
-        
-            <button type="reset" class="btn">zesxrdvghj</button>
+            <button type="submit" class="btn">Iniciar Sesión</button>
+
+            <button type="button" class="btn" onclick="window.location.href='registro.html'">Crear Cuenta</button>
 
         </form>
     </div>
+
+    <script src="../controler/Login.js"></script>
 </body>
 </html>

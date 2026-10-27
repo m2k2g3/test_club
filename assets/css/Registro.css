@@ -1,46 +1,44 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Courier New', Courier, monospace;
     box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 body {
-        background-color: rgba(84, 14, 131, 0.600);
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        min-height: 100vh;
-        padding: 20px;
-    background: url('../imagenes/1pixstudio-ai-generated-8008017_1920.jpg') ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 30px 15px;
+    background: url('../imagenes/1pixstudio-ai-generated-8008017_1920.jpg') no-repeat center center/cover;
 }
 
 .Registronl1 {
-    width: 420px;
-    background: purple;
+    width: 100%;
+    max-width: 480px;
+    background: rgba(128, 0, 128, 0.4);
+    backdrop-filter: blur(8px);
     color: #fff;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    margin: auto;
 }
 
-input:focus, select:focus {
-    border-color: rgb(78, 4, 50);
-    box-shadow:  0 0 0 3px rgb(137, 30, 151);
-}
-
-h2 {
-    color: rgb(220, 200, 255);
-    margin-bottom: 20px;
+.Registronl1 h2 {
     font-size: 24px;
-    text-align: center;
-    border-bottom: 2px solid #e5e7eb;
+    text-align: center; 
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: rgb(220, 200, 255);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     padding-bottom: 10px;
 }
 
 .grupo-input {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
 }
@@ -48,38 +46,95 @@ h2 {
 .grupo-input label {
     margin-bottom: 5px;
     font-size: 14px;
+    color: #fff;
+}
+
+.Registronl1 input:not([type="radio"]), 
+.Registronl1 select {
+    width: 100%;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    outline: none;
+    border-radius: 40px;
+    padding: 0 20px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.Registronl1 select option {
+    background: #4a085c;
+    color: #fff;
+}
+
+/* Estilo específico y pequeño para los botones de radio */
+.Registronl1 input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #8102ca; 
+    cursor: pointer;
+}
+
+.Registronl1 input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.Registronl1 input:focus, 
+.Registronl1 select:focus {
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .grupo-botones {
     display: flex;
     gap: 10px;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
-button {
-    flex: 1;
-    padding: 12px;
+/* Estilos personalizados para los botones de registro */
+.Registronl1 button {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 120px;
+    height: 45px;
     border: none;
-    border-radius: 100px;
-    font-size: 16px;
-    font-weight: bold;
+    outline: none;
+    border-radius: 40px;
     cursor: pointer;
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-button[type="submit"] {
-    background-color: #b489b6;
+.btn-submit {
+    background: #fff;
     color: purple;
 }
 
-button[type="reset"] {
-    background-color: #5c0372;
-    color: #fff;
+.btn-submit:hover {
+    background: rgba(255, 255, 255, 0.85);
+    transform: translateY(-2px);
 }
 
-input, select {
-    padding: 10px;
-    border: 1px solid rgb(42, 13, 145);
-    border-radius: 5px;
-    font-size: 15px;
+.btn-reset {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-reset:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-volver {
+    flex: 1 1 100% !important;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-volver:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
 }

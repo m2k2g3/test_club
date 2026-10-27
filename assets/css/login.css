@@ -10,48 +10,65 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden;
-    background: url('../imagenes/uh.webp');
+    overflow-y: auto;
+    padding: 20px;
+    background: url('../imagenes/1pixstudio-ai-generated-8008017_1920.jpg') no-repeat center center/cover;
 }
 
-
+.login-card,
 .aaaaa {
     width: 420px;
-    background: rgba(128, 0, 128, 0.308);
+    max-width: 100%;
+    background: rgba(128, 0, 128, 0.4);
+    backdrop-filter: blur(8px);
     color: #fff;
     padding: 40px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-.aaaaa h1 {
-    font-size: 36px;
+.login-card h2,
+.aaaaa h2 {
+    font-size: 28px;
     text-align: center; 
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
 }
 
-.aaaaa .user, 
+.login-card .user, 
+.aaaaa .user,
+.login-card .password, 
 .aaaaa .password {
     width: 100%;
     height: 50px;
     margin: 20px 0;
 }
 
+.login-card input,
 .aaaaa input {
     width: 100%;
     height: 100%;
-    background: transparent;
-    border: none;
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 40px;
     padding: 0 20px;
     color: #fff;
-    font-size: 16px;
+    font-size: 15px;
 }
 
+.login-card input::placeholder,
+.aaaaa input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
 
-/* Estilo para el botón macaco*/
+.login-card input:focus,
+.aaaaa input:focus {
+    border-color: #fff;
+}
+
+/* Estilo para los botones */
+.login-card .btn,
 .aaaaa .btn {
     width: 100%;
     height: 45px;
@@ -63,10 +80,12 @@ body {
     font-size: 16px;
     color: purple;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 15px;
     transition: 0.3s;
 }
 
+.login-card .btn:hover,
 .aaaaa .btn:hover {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.85);
+    transform: translateY(-2px);
 }
