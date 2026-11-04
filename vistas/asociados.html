@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es-co">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Frambuesa - Registro de Asociados</title>
+    <!-- Bootstrap 5.3.3 & Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <!-- Estilos específicos para formularios -->
+    <link rel="stylesheet" href="../assets/css/Registros.css">
+</head>
+
+<body>
+
+    <!-- Barra de navegación superior -->
+    <nav class="top-navbar d-flex justify-content-between align-items-center">
+        <h1 class="brand-title">
+            <i class="bi bi-people-fill"></i> Club Frambuesa
+        </h1>
+        <div>
+            <a href="dashboard.html" class="btn-nav-back">
+                <i class="bi bi-arrow-left-circle"></i> Volver al Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal del Formulario -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-9">
+
+                <div class="form-card">
+                    <!-- Encabezado del Formulario -->
+                    <div class="form-header d-flex align-items-center gap-3">
+                        <div class="header-icon-box">
+                            <i class="bi bi-person-plus-fill"></i>
+                        </div>
+                        <div>
+                            <h2>Registro de Asociados</h2>
+                            <p>Formulario oficial de inscripción y afiliación de nuevos socios al Club Frambuesa</p>
+                        </div>
+                    </div>
+
+                    <form id="formAsociados" novalidate>
+
+                        <!-- Sección 1: Información Personal -->
+                        <div class="section-title">
+                            <i class="bi bi-person-lines-fill"></i> Datos Personales y de Identificación
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="tipoDocumento" class="form-label">
+                                    <i class="bi bi-card-heading text-purple"></i> Tipo de Documento *
+                                </label>
+                                <select class="form-select" id="tipoDocumento" name="tipoDocumento" required>
+                                    <option value="CC" selected>Cédula de Ciudadanía (C.C.)</option>
+                                    <option value="CE">Cédula de Extranjería (C.E.)</option>
+                                    <option value="PAS">Pasaporte</option>
+                                    <option value="TI">Tarjeta de Identidad (T.I.)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="documento" class="form-label">
+                                    <i class="bi bi-upc text-purple"></i> Número de Documento *
+                                </label>
+                                <input type="number" class="form-control" id="documento" name="documento" required 
+                                       placeholder="Ej: 1052345678">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="fechaNacimiento" class="form-label">
+                                    <i class="bi bi-calendar3 text-purple"></i> Fecha de Nacimiento *
+                                </label>
+                                <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="nombre" class="form-label">
+                                    <i class="bi bi-person text-purple"></i> Nombres *
+                                </label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required 
+                                       placeholder="Ej: Juan Carlos">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="apellido" class="form-label">
+                                    <i class="bi bi-person text-purple"></i> Apellidos *
+                                </label>
+                                <input type="text" class="form-control" id="apellido" name="apellido" required 
+                                       placeholder="Ej: Pérez Gómez">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    <i class="bi bi-gender-ambiguous text-purple"></i> Género *
+                                </label>
+                                <div class="custom-radio-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="genero" id="genFem" value="Femenino" required checked>
+                                        <label class="form-check-label" for="genFem">Femenino</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="genero" id="genMasc" value="Masculino">
+                                        <label class="form-check-label" for="genMasc">Masculino</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="genero" id="genOtro" value="Otro">
+                                        <label class="form-check-label" for="genOtro">Otro</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="estadoCivil" class="form-label">
+                                    <i class="bi bi-heart text-purple"></i> Estado Civil
+                                </label>
+                                <select class="form-select" id="estadoCivil" name="estadoCivil">
+                                    <option value="Soltero" selected>Soltero(a)</option>
+                                    <option value="Casado">Casado(a)</option>
+                                    <option value="UnionLibre">Unión Libre</option>
+                                    <option value="Viudo">Viudo(a)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Sección 2: Contacto y Residencia -->
+                        <div class="section-title">
+                            <i class="bi bi-geo-alt"></i> Datos de Contacto y Ubicación
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="ciudad" class="form-label">
+                                    <i class="bi bi-buildings text-purple"></i> Ciudad / Municipio *
+                                </label>
+                                <select class="form-select" id="ciudad" name="ciudad" required>
+                                    <option value="" disabled selected>Seleccione ciudad...</option>
+                                    <option value="sogamoso">Sogamoso</option>
+                                    <option value="duitama">Duitama</option>
+                                    <option value="tunja">Tunja</option>
+                                    <option value="nobsa">Nobsa</option>
+                                    <option value="paipa">Paipa</option>
+                                    <option value="otra">Otra ciudad</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="direccion" class="form-label">
+                                    <i class="bi bi-house-door text-purple"></i> Dirección de Residencia *
+                                </label>
+                                <input type="text" class="form-control" id="direccion" name="direccion" required 
+                                       placeholder="Ej: Carrera 11 # 15 - 40">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="telefono" class="form-label">
+                                    <i class="bi bi-telephone text-purple"></i> Teléfono / Celular *
+                                </label>
+                                <input type="number" class="form-control" id="telefono" name="telefono" required 
+                                       placeholder="Ej: 3124567890">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="profesion" class="form-label">
+                                    <i class="bi bi-briefcase text-purple"></i> Profesión u Ocupación
+                                </label>
+                                <input type="text" class="form-control" id="profesion" name="profesion" 
+                                       placeholder="Ej: Contador, Ingeniero, Comerciante">
+                            </div>
+                        </div>
+
+                        <!-- Sección 3: Datos de Afiliación y Membresía -->
+                        <div class="section-title">
+                            <i class="bi bi-award"></i> Membresía en el Club y Aportes
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="tipoMembresia" class="form-label">
+                                    <i class="bi bi-patch-check text-purple"></i> Categoría de Asociado *
+                                </label>
+                                <select class="form-select" id="tipoMembresia" name="tipoMembresia" required>
+                                    <option value="Activo" selected>Socio Activo</option>
+                                    <option value="Fundador">Socio Fundador</option>
+                                    <option value="Honorario">Socio Honorario</option>
+                                    <option value="Beneficiario">Beneficiario / Familiar</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="fechaAfiliacion" class="form-label">
+                                    <i class="bi bi-calendar-plus text-purple"></i> Fecha de Afiliación *
+                                </label>
+                                <input type="date" class="form-control" id="fechaAfiliacion" name="fechaAfiliacion" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="cuotaAporte" class="form-label">
+                                    <i class="bi bi-wallet2 text-purple"></i> Aporte Mensual Acordado ($)
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="cuotaAporte" value="50000" min="10000">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="contactoEmergencia" class="form-label">
+                                    <i class="bi bi-shield-plus text-purple"></i> Contacto de Emergencia (Nombre)
+                                </label>
+                                <input type="text" class="form-control" id="contactoEmergencia" 
+                                       placeholder="Familiar o persona de confianza">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="telefonoEmergencia" class="form-label">
+                                    <i class="bi bi-telephone-plus text-purple"></i> Teléfono de Emergencia
+                                </label>
+                                <input type="tel" class="form-control" id="telefonoEmergencia" 
+                                       placeholder="Ej: 310 987 6543">
+                            </div>
+                        </div>
+
+                        <!-- Sección 4: Credenciales para el Portal -->
+                        <div class="section-title">
+                            <i class="bi bi-key"></i> Cuenta de Acceso al Portal
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">
+                                    <i class="bi bi-envelope text-purple"></i> Correo Electrónico (Usuario de Acceso) *
+                                </label>
+                                <input type="email" class="form-control" id="email" name="email" required 
+                                       placeholder="asociado@email.com">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="clave" class="form-label">
+                                    <i class="bi bi-lock text-purple"></i> Contraseña de Acceso *
+                                </label>
+                                <input type="password" class="form-control" id="clave" name="clave" required 
+                                       placeholder="Defina una clave segura">
+                            </div>
+                        </div>
+
+                        <!-- Botones de Acción -->
+                        <div class="form-actions">
+                            <a href="dashboard.html" class="btn btn-club-light">
+                                <i class="bi bi-x-circle"></i> Cancelar / Volver
+                            </a>
+                            <button type="reset" class="btn btn-club-secondary">
+                                <i class="bi bi-arrow-counterclockwise"></i> Limpiar Formulario
+                            </button>
+                            <button type="submit" class="btn btn-club-primary">
+                                <i class="bi bi-person-check-fill"></i> Guardar y Afiliar Asociado
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de inicialización y registro -->
+    <script>
+        document.getElementById('fechaAfiliacion').value = new Date().toISOString().split('T')[0];
+
+        document.getElementById('formAsociados').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const documento = document.getElementById('documento').value.trim();
+            const nombre = document.getElementById('nombre').value.trim();
+            const apellido = document.getElementById('apellido').value.trim();
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const clave = document.getElementById('clave').value;
+
+            if (!documento || !nombre || !apellido || !email || !clave) {
+                alert('Por favor complete todos los campos obligatorios (*).');
+                return;
+            }
+
+            const usuarios = JSON.parse(localStorage.getItem('usuarios_registrados') || '[]');
+            const existe = usuarios.some(u => u.usuario.toLowerCase() === email);
+            if (existe) {
+                alert('Ya existe un asociado registrado con este correo electrónico.');
+                return;
+            }
+
+            const nuevoAsociado = {
+                documento,
+                nombre: `${nombre} ${apellido}`,
+                usuario: email,
+                clave,
+                rol: 'asociado'
+            };
+
+            usuarios.push(nuevoAsociado);
+            localStorage.setItem('usuarios_registrados', JSON.stringify(usuarios));
+
+            alert('¡Asociado ' + nombre + ' ' + apellido + ' registrado y afiliado exitosamente!');
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>
