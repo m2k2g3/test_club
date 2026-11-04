@@ -24,23 +24,3 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 });
 
 
-/*document.getElementById('formLogin').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const usuarioInput = document.getElementById('documento').value;
-    const claveInput = document.getElementById('password').value;
-
-    const usuarioEncontrado = usuarios.find(
-        u => u.usuario === usuarioInput && u.clave === claveInput
-    );
-
-    if (usuarioEncontrado) {
-        localStorage.setItem('logueado', 'true');
-        localStorage.setItem('rol', usuarioEncontrado.rol);
-        localStorage.setItem('nombre', usuarioEncontrado.nombre);
-        window.location.href = 'dashboard.html';
-    }else{
-        alert('Usuario o contraseña incorrectos');
-    }
-
-});*/

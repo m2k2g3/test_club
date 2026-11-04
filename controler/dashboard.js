@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnCerrar) {
         btnCerrar.addEventListener('click', () => {
             localStorage.removeItem('logueado');
-            localStorage.removeItem('logeado');
             localStorage.removeItem('nombre');
             localStorage.removeItem('rol');
             window.location.href = 'login.html';
