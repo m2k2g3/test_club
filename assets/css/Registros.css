@@ -250,7 +250,7 @@ body {
     box-shadow: 0 4px 15px rgba(121, 9, 155, 0.35);
     transition: all 0.25s ease;
 }
-
+/* revisar */
 .btn-club-primary:hover {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-purple));
     color: #ffffff;

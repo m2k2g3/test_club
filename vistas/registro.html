@@ -11,7 +11,7 @@
 <div class="Registronl1">
     <h2>Registro de Asociados</h2>
 
-    <form id="FormRegistro">
+    <form id="FormRegistro" action="../model/guardar_asociado.php" method="POST">
         <div class="grupo-input">
             <label for="documento">Ingrese su documento</label>
             <input id="documento" name="documento" type="number" required placeholder="1234567890">
@@ -53,7 +53,7 @@
         </div>
 
         <div class="grupo-input">
-            <label for="ciudad">Ciudad</label>
+            <label for="ciudad">ciudad</label>
             <select id="ciudad" name="ciudad" required>
                 <option value="" disabled selected>Seleccione ciudad</option>
                 <option value="sogamoso">Sogamoso</option>
@@ -87,7 +87,8 @@
             <button type="reset" class="btn-reset">Limpiar</button>
             <button type="button" class="btn-volver" onclick="window.location.href='login.html'">Iniciar Sesión</button>
         </div>
-        
+
+        <p id="mensaje_registro" role="status" aria-live="polite"></p>
     </form>
 </div>
 
