@@ -12,6 +12,14 @@ form.addEventListener("submit", async function (event) {
     //leer campos del formulario y los convierte en un objeto
     const asociado = Object.fromEntries(new FormData(form).entries());
 
+    if (asociado.clave !== asociado["clave-confirmar"]) {
+        document.getElementById("mensaje_registro").textContent = "Las contraseñas no coinciden."; // Mostrar mensaje en el párrafo
+        document.getElementById("mensaje_registro").dataset.tipo = "error";
+
+    }
+
+    delete asociado["clave-confirmar"]; // Eliminar la propiedad "clave-confirmar" del objeto asociado
+
     btnGuardar.disabled = true; //desactivar el botón de guardar mientras se procesa la solicitud
 
     try {
