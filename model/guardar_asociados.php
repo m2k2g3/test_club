@@ -1,102 +1,66 @@
 <?php
-header('Content-Type: application/json');
-
-// Asegúrate de que el nombre de tu archivo de clase sea exacto (asociado.php o asociados.php)
-require_once __DIR__ . '/asociados.php'; 
+header('Content-Type: application/json; charset=utf-8');
+require_once __DIR__ . '/../model/asociados.php';
 
 try {
-    // 1. Intentar leer los datos como JSON (desde JavaScript fetch)
+    // Validar que el método sea POST; si no lo es, lanzar excepción
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        http_response_code(405);
+        throw new Exception('Método no permitido.');
+    }
+
+    // Leer el contenido JSON de la solicitud enviada por fetch
     $json = file_get_contents('php://input');
+
+    // Decodificar el JSON en un array asociativo
     $datos = json_decode($json, true);
 
-    // 2. PLAN B: Si el JSON llegó vacío, intentar leer desde $_POST clásico
-    if (empty($datos)) {
-        $datos = $_POST;
-    }
-
-    // 3. Validar que realmente haya llegado información por alguna de las dos vías
-    if (empty($datos)) {
+    // Validar que los datos se hayan pasado a un array
+    if (!is_array($datos) || json_last_error() !== JSON_ERROR_NONE) {
         http_response_code(400);
-        echo json_encode(["success" => false, "mensaje" => "No se recibieron datos válidos."]);
-        exit;
+        throw new Exception('Datos inválidos.');
     }
 
-    // 4. Validaciones de cada campo
-    if (empty($datos['documento']) || !is_numeric($datos['documento'])) {
+    $campos = ['documento', 'nombres', 'apellidos', 'fechaNacimiento', 'genero', 'direccionResidencia', 'cuidad', 'telefono', 'email'];
+    
+    // Validar que todos los campos obligatorios estén presentes y no estén vacíos
+    foreach ($campos as $campo) {
+        if (!isset($datos[$campo]) || empty($datos[$campo])) {
+            http_response_code(400);
+            throw new Exception("El campo: '$campo' es obligatorio.");
+        }
+    }
+
+    // Validar el formato del campo email
+    if (!filter_var($datos['email'], FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
-        throw new Exception("El campo 'documento' es obligatorio y debe ser numérico.");
+        throw new Exception("El campo: 'email' no es válido.");
     }
 
-    if (empty(trim($datos['nombres']))) {
-        http_response_code(400);
-        throw new Exception("El campo 'nombres' es obligatorio.");
-    }
-
-    if (empty(trim($datos['apellidos']))) {
-        http_response_code(400);
-        throw new Exception("El campo 'apellido' es obligatorio.");
-    }
-
-    if (empty($datos['fechaNacimiento'])) {
-        http_response_code(400);
-        throw new Exception("El campo 'fechaNacimiento' es obligatorio.");
-    }
-    $d = DateTime::createFromFormat('Y-m-d', $datos['fechaNacimiento']);
-    if (!$d || $d->format('Y-m-d') !== $datos['fechaNacimiento']) {
-        http_response_code(400);
-        throw new Exception("El formato de la 'fechaNacimiento' no es válido.");
-    }
-
-    $generosPermitidos = ['Masculino', 'Femenino', 'Otro'];
-    if (empty($datos['genero']) || !in_array($datos['genero'], $generosPermitidos)) {
-        http_response_code(400);
-        throw new Exception("El campo 'género' no es válido.");
-    }
-
-
-if (empty(trim($datos['direccionResidencia']))) {
-    http_response_code(400);
-    throw new Exception("El campo 'dirección' es obligatorio.");
-}
-
-    $ciudadesPermitidas = ['Sogamoso', 'Duitama', 'Tunja'];
-    if (empty($datos['ciudad']) || !in_array($datos['ciudad'], $ciudadesPermitidas)) {
-        http_response_code(400);
-        throw new Exception("La ciudad seleccionada no es válida.");
-    }
-
-    if (empty($datos['telefono']) || !is_numeric($datos['telefono'])) {
-        http_response_code(400);
-        throw new Exception("El campo 'teléfono' es obligatorio y debe ser numérico.");
-    }
-
-    if (empty($datos['email']) || !filter_var($datos['email'], FILTER_VALIDATE_EMAIL)) {
-        http_response_code(400);
-        throw new Exception("El campo 'email' no es válido.");
-    }
-
-    // 5. Instanciar y guardar en la base de datos
     $asociado = new Asociado($datos);
+
     $resultado = $asociado->guardarAsociado();
 
     if ($resultado) {
-        echo json_encode([
-            "ok" => true, 
-            "success" => true, 
-            "mensaje" => "Asociado guardado exitosamente"
-        ]);
+        http_response_code(201);
+        echo json_encode(['success' => true, 'mensaje' => 'Asociado guardado correctamente.']);
     } else {
-        echo json_encode([
-            "ok" => false, 
-            "success" => false, 
-            "mensaje" => "No se pudo guardar el asociado en la base de datos."
-        ]);
+        http_response_code(500);
+        throw new Exception('Error al guardar el asociado.');
     }
 
+} catch (PDOException $e) {
+    if ($e->getCode() == 23000) { // Código de error para violación de clave única
+        http_response_code(409);
+        echo json_encode(["success" => false, "mensaje" => "El documento ya existe"]);
+    } else {
+        http_response_code(500);
+        echo json_encode(["success" => false, "mensaje" => "Error en la base de datos: " . $e->getMessage()]);
+    }
 } catch (Exception $e) {
-    echo json_encode([
-        "ok" => false, 
-        "success" => false, 
-        "mensaje" => $e->getMessage()
-    ]);
+    // Si ya se había asignado un código 400 o 405 arriba, lo respetamos, de lo contrario será 500
+    if (http_response_code() === 200) {
+        http_response_code(500);
+    }
+    echo json_encode(["success" => false, "mensaje" => $e->getMessage()]);
 }
