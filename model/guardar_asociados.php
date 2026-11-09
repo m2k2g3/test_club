@@ -21,7 +21,7 @@ try {
         throw new Exception('Datos inválidos.');
     }
 
-    $campos = ['documento', 'nombres', 'apellidos', 'fechaNacimiento', 'genero', 'direccionResidencia', 'cuidad', 'telefono', 'email', 'clave'];
+    $campos = ['documento', 'nombres', 'apellidos', 'fechaNacimiento', 'genero', 'direccionResidencia', 'ciudad', 'telefono', 'email', 'clave'];
     
     // Validar que todos los campos obligatorios estén presentes y no estén vacíos
     foreach ($campos as $campo) {

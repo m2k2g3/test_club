@@ -1,51 +1,58 @@
-// tomar datos del formulario
 const form = document.getElementById("FormRegistro");
 
 form.addEventListener("submit", async function (event) {
-
     // Evitar que se recargue la página al enviar el formulario
     event.preventDefault();
 
-    //bloquear el boton de guardar
+    // Bloquear el botón de guardar
     const btnGuardar = form.querySelector("button[type='submit']");
 
-    //leer campos del formulario y los convierte en un objeto
+    // Leer campos del formulario y los convierte en un objeto
     const asociado = Object.fromEntries(new FormData(form).entries());
 
-    if (asociado.clave !== asociado["clave-confirmar"]) {
-        document.getElementById("mensaje_registro").textContent = "Las contraseñas no coinciden."; // Mostrar mensaje en el párrafo
-        document.getElementById("mensaje_registro").dataset.tipo = "error";
-
+    // 1. Corregido el acceso a 'clave-confirmar' con corchetes
+    if (asociado.clave !== asociado['clave-confirmar']) {
+        const mensajeP = document.getElementById("mensaje_registro");
+        mensajeP.textContent = "Las contraseñas no coinciden.";
+        mensajeP.dataset.tipo = "error";
+        return; // Detener la ejecución si las contraseñas no coinciden
     }
 
-    delete asociado["clave-confirmar"]; // Eliminar la propiedad "clave-confirmar" del objeto asociado
+    delete asociado["clave-confirmar"]; // Eliminar la propiedad del objeto antes de enviarlo
 
-    btnGuardar.disabled = true; //desactivar el botón de guardar mientras se procesa la solicitud
+    btnGuardar.disabled = true; // Desactivar el botón mientras se procesa
 
     try {
-        const response = await fetch(form.action, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(asociado) });
-        const resultado = await response.json();//pasar la respuesta de json a un objeto de javascript
-        document.getElementById("mensaje_registro").textContent = "guardo exitosamente"; // Mostrar mensaje en el párrafo
-        document.getElementById("mensaje_registro").dataset.tipo = "";
-        document.getElementById("mensaje_registro").textContent = resultado.mensaje; // Mostrar mensaje en el párrafo
-        if (resultado.ok && resultado.success) {
-            form.reset(); // Limpiar el formulario si la 
+        const response = await fetch(form.action, { 
+            method: 'POST', 
+            headers: { 'content-type': 'application/json' }, 
+            body: JSON.stringify(asociado) 
+        });
 
-            // Si el registro fue exitoso, redirigir a la página de inicio de sesión
+        const resultado = await response.json(); // Convertir respuesta a objeto JS
+
+        const mensajeP = document.getElementById("mensaje_registro");
+        mensajeP.textContent = resultado.mensaje; // Mostrar mensaje del servidor
+        
+        // Asignar el tipo de mensaje según si fue exitoso o no
+        if (resultado.success) {
+            mensajeP.dataset.tipo = "exito";
+            form.reset(); // Limpiar el formulario
+
+            // 2. Redirigir al login después de 2 segundos si el registro fue exitoso
             setTimeout(() => {
-                window.location.href = "login.html";
+                window.location.href = "login.html"; // Ajusta la ruta si tu login está en otra carpeta
             }, 2000);
+        } else {
+            mensajeP.dataset.tipo = "error";
         }
 
     } catch (error) {
         console.error("Error al guardar el asociado:", error);
-        alert("Ocurrió un error al guardar el asociado.");
-        document.getElementById("mensaje_registro").textContent = "Ocurrió un error al guardar el asociado."; // Mostrar mensaje en el párrafo
+        const mensajeP = document.getElementById("mensaje_registro");
+        mensajeP.textContent = "Ocurrió un error de red al intentar guardar.";
+        mensajeP.dataset.tipo = "error";
+    } finally {
+        btnGuardar.disabled = false; // Reactivar el botón pase lo que pase
     }
-
-    btnGuardar.disabled = false; //activar el botón de guardar después de procesar la solicitud
-
 });
-
-
-
