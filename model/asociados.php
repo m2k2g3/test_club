@@ -13,6 +13,7 @@ class Asociado {
     private string $ciudad; 
     private string $telefono; 
     private string $email;
+    private string $clave; // Nueva propiedad para la contraseña
     
     private ?PDO $conexion;
 
@@ -27,6 +28,8 @@ class Asociado {
         $this->ciudad = $datos['ciudad'] ?? '';
         $this->telefono = (string) ($datos['telefono'] ?? '');
         $this->email = $datos['email'] ?? '';
+        $this->clave = password_hash($datos['clave'] ?? '', PASSWORD_DEFAULT); // Hash de la contraseña
+
 
         $conexionBD = new Conexion();
         $this->conexion = $conexionBD->conectar();
@@ -34,8 +37,8 @@ class Asociado {
 
     public function guardarAsociado() {
         // Los nombres de las columnas coinciden exactamente con tu tabla de la imagen
-        $sql = "INSERT INTO asociados (documento, nombres, apellidos, fechaNacimiento, genero, direccionResidencia, ciudad, telefono, email) 
-                VALUES (:documento, :nombres, :apellidos, :fechaNacimiento, :genero, :direccionResidencia, :ciudad, :telefono, :email)";
+        $sql = "INSERT INTO asociados (documento, nombres, apellidos, fechaNacimiento, genero, direccionResidencia, ciudad, telefono, email, clave) 
+                VALUES (:documento, :nombres, :apellidos, :fechaNacimiento, :genero, :direccionResidencia, :ciudad, :telefono, :email, :clave)";
 
         $consulta = $this->conexion->prepare($sql);
         
@@ -51,7 +54,8 @@ class Asociado {
             ':direccionResidencia' => $this->direccionResidencia,
             ':ciudad' => $this->ciudad,
             ':telefono' => $this->telefono,
-            ':email' => $this->email
+            ':email' => $this->email,
+            ':clave' => $this->clave
         ]);
     }
 }
