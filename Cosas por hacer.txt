@@ -1,0 +1,21 @@
+hfavbudnlfv:
+
+1.  Registro de Actividades
+2.  Registro de Pago
+3.  Registro de Préstamos
+4.  Registro de Asociados
+
+cosas para preguntar - olvide investigar
+1. como usar root
+
+me
+1. revizar el maus que esta fallando - se traba o deja de responder
+2. investigar sobre el arte de sierto autor ruso (creo) para hacer un camabio de estilo a este proyecto
+y darle mas personaliza debido que me lleva la fregada como naranjas el color morado es el
+color seguro de la ia
+3. preguntar sobre como organizar mejor este tipo de proyecto
+4. putiar la ia  
+5. poner animaciones 
+6. personalizar la lista de errores
+
+hacer la base de datos del proyecto

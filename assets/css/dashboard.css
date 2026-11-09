@@ -1,0 +1,42 @@
+/* Estilos principales para Dashboard */
+body {
+    background-image: url('../imagenes/1pixstudio-ai-generated-8008017_1920.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.icono-nl1 {
+    font-size: 3rem;
+    color: #9b0475da;
+}
+
+.header-mr {
+    background-color: #8102ca;
+    color: #ffffff;
+    padding: 20px 30px;
+}
+
+.modulo-card {
+    border-top: 4px solid #850aaa;
+    border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.modulo-card.asociado {
+    border-top: 4px solid #5b0981c0;
+}
+
+.modulo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.text-purple {
+    color: #800080;
+}
