@@ -11,14 +11,14 @@ form.addEventListener("submit", async function (event) {
     const asociado = Object.fromEntries(new FormData(form).entries());
 
     // 1. Corregido el acceso a 'clave-confirmar' con corchetes
-    if (asociado.clave !== asociado['clave-confirmar']) {
+    if (asociado.clave !== asociado.clave-confirmar) {
         const mensajeP = document.getElementById("mensaje_registro");
         mensajeP.textContent = "Las contraseñas no coinciden.";
         mensajeP.dataset.tipo = "error";
         return; // Detener la ejecución si las contraseñas no coinciden
     }
 
-    delete asociado["clave-confirmar"]; // Eliminar la propiedad del objeto antes de enviarlo
+    delete asociado.clave-confirmar; // Eliminar la propiedad del objeto antes de enviarlo
 
     btnGuardar.disabled = true; // Desactivar el botón mientras se procesa
 

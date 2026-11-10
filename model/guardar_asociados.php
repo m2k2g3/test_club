@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-require_once __DIR__ . '/../model/asociados.php';
+require_once __DIR__ . '/asociados.php';
 
 try {
     // Validar que el método sea POST; si no lo es, lanzar excepción
@@ -14,6 +14,7 @@ try {
 
     // Decodificar el JSON en un array asociativo
     $datos = json_decode($json, true);
+    echo json_encode($datos); // Para depuración, puedes eliminarlo después
 
     // Validar que los datos se hayan pasado a un array
     if (!is_array($datos) || json_last_error() !== JSON_ERROR_NONE) {
@@ -22,7 +23,7 @@ try {
     }
 
     $campos = ['documento', 'nombres', 'apellidos', 'fechaNacimiento', 'genero', 'direccionResidencia', 'ciudad', 'telefono', 'email', 'clave'];
-    
+
     // Validar que todos los campos obligatorios estén presentes y no estén vacíos
     foreach ($campos as $campo) {
         if (!isset($datos[$campo]) || empty($datos[$campo])) {
@@ -37,6 +38,28 @@ try {
         throw new Exception("El campo: 'email' no es válido.");
     }
 
+    $clave = $datos['clave'];
+
+    if (mb_strlen($clave) < 8) {
+        http_response_code(400);
+        throw new Exception("La contraseña debe tener al menos 8 caracteres.");
+    }
+
+    $reglas = [
+        '/[A-Z]/'         => "La contraseña debe incluir al menos una letra mayúscula.",
+        '/[a-z]/'         => "La contraseña debe incluir al menos una letra minúscula.",
+        '/\d/'            => "La contraseña debe incluir al menos un número.",
+        '/[@$!%*?&_\-#]/' => "La contraseña debe incluir al menos un carácter especial (@$!%*?&-_#).",
+    ];
+
+    foreach ($reglas as $patron => $mensaje) {
+        if (!preg_match($patron, $clave)) {
+            http_response_code(400);
+            throw new Exception($mensaje);
+        }
+    }
+
+
     $asociado = new Asociado($datos);
 
     $resultado = $asociado->guardarAsociado();
@@ -48,7 +71,6 @@ try {
         http_response_code(500);
         throw new Exception('Error al guardar el asociado.');
     }
-
 } catch (PDOException $e) {
     if ($e->getCode() == 23000) { // Código de error para violación de clave única
         http_response_code(409);

@@ -4,16 +4,16 @@
 require_once __DIR__. '/../config/conexion.php';
 
 class Asociado {
-    private string $documento;
-    private string $nombres;
-    private string $apellidos;
-    private DateTime $fechaNacimiento;
-    private string $genero;
-    private string $direccionResidencia;
-    private string $ciudad; 
-    private string $telefono; 
-    private string $email;
-    private string $clave; // Nueva propiedad para la contraseña
+    private  $documento;
+    private  $nombres;
+    private  $apellidos;
+    private  $fechaNacimiento;
+    private  $genero;
+    private  $direccionResidencia;
+    private  $ciudad; 
+    private  $telefono; 
+    private  $email;
+    private  $clave; // Nueva propiedad para la contraseña
     
     private ?PDO $conexion;
 
@@ -22,7 +22,7 @@ class Asociado {
         $this->documento = $datos['documento'] ?? '';
         $this->nombres = $datos['nombres'] ?? '';        // Viene del HTML como 'nombre'
         $this->apellidos = $datos['apellidos'] ?? '';    // Viene del HTML como 'apellido'
-        $this->fechaNacimiento = new DateTime($datos['fechaNacimiento'] ?? 'now');       
+        $this->fechaNacimiento =($datos['fechaNacimiento'] ?? 'now');       
         $this->genero = $datos['genero'] ?? '';
         $this->direccionResidencia = $datos['direccionResidencia'] ?? ''; // Viene del HTML como 'direccion'
         $this->ciudad = $datos['ciudad'] ?? '';
@@ -59,3 +59,4 @@ class Asociado {
         ]);
     }
 }
+?>
