@@ -1,5 +1,9 @@
 hfavbudnlfv:
 
+hacer eso
+|
+v
+
 1.  Registro de Actividades
 2.  Registro de Pago
 3.  Registro de Préstamos

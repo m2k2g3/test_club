@@ -1,26 +1,43 @@
-const usuariosDefault = [
-    { usuario: '123@email.com', clave: '123', rol: 'admin', nombre: 'Admin salsa' },
-    { usuario: '1234@email.com', clave: '1234', rol: 'asociado', nombre: 'Ricardo González' }
-];
+const formulario = document.getElementById('loginForm');
 
-document.getElementById('loginForm').addEventListener('submit', function(e) {
+formulario.addEventListener('submit', async function (e) {
     e.preventDefault();
-    const usuarioInput = document.getElementById('usuario').value.trim();
-    const claveInput = document.getElementById('clave').value;
 
-    const usuariosGuardados = JSON.parse(localStorage.getItem('usuarios_registrados') || '[]');
-    const todosLosUsuarios = [...usuariosDefault, ...usuariosGuardados];
+    const boton = formulario.querySelector('button[type="submit"]');
+    const mensaje = document.getElementById('mensajeLogin'); // 1. Corregido: se usa document en lugar de formulario
 
-    const usuarioEncontrado = todosLosUsuarios.find(u => u.usuario.toLowerCase() === usuarioInput.toLowerCase() && u.clave === claveInput);
+    mensaje.textContent = "Iniciando sesión..."; // Opcional: mejor que un alert() para la UX
+    boton.disabled = true;
 
-    if (usuarioEncontrado) {
+    // Convertir los datos del formulario a objeto antes del try para reutilizarlos si hace falta
+    const datosFormulario = Object.fromEntries(new FormData(formulario).entries());
+
+    try {
+        const respuesta = await fetch(formulario.action, {
+            method: 'POST',
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(datosFormulario)
+        });
+
+        const resultado = await respuesta.json();
+
+        if (!resultado.success) {
+            mensaje.textContent = "NO fue posible iniciar sesión. Por favor, verifique sus credenciales.";
+            boton.disabled = false;
+            return;
+        }
+
         localStorage.setItem('logueado', 'true');
-        localStorage.setItem('rol', usuarioEncontrado.rol || 'asociado');
-        localStorage.setItem('nombre', usuarioEncontrado.nombre || usuarioInput);
+        localStorage.setItem('rol', resultado.rol);
+        // 2. Corregido: se usa una alternativa existente si resultado.nombre no viene
+        localStorage.setItem('nombre', resultado.nombre || datosFormulario.email || 'Asociado');
+        
         window.location.href = 'dashboard.html';
-    } else {
-        alert('Usuario o contraseña incorrectos.');
+
+    } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        mensaje.textContent = "Error al iniciar sesión. Por favor, inténtelo de nuevo más tarde.";
+    } finally {
+        boton.disabled = false; // Se encarga el finally de reactivar el botón pase lo que pase
     }
 });
-
-

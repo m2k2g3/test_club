@@ -13,23 +13,26 @@
     <div class="login-card">
         <h2>Iniciar Sesión</h2>
 
-        <form id="loginForm">
+        <form id="loginForm" action="../model/session.php" method="POST">
 
             <div class="user">
-                <input type="email" id="usuario" required placeholder="Ingresar el Email (ejemplo@email.com)">
+                <input type="email" name="email" id="usuario" required placeholder="Ingresar el Email (ejemplo@email.com)">
             </div>
 
             <div class="password">
-                <input type="password" id="clave" required placeholder="Ingresar su Contraseña">
+                <input type="password" name="clave" id="clave" required placeholder="Ingresar su Contraseña">
             </div>
 
             <button type="submit" class="btn">Iniciar Sesión</button>
 
             <button type="button" class="btn" onclick="window.location.href='registro.html'">Crear Cuenta</button>
 
+            <p id="mensajeLogin" class="message text-danger mt-3 mb-0"></p>
+
         </form>
     </div>
 
     <script src="../controler/Login.js"></script>
 </body>
+
 </html>
