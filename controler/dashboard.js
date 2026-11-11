@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logueado = localStorage.getItem('logueado');
 
     if (logueado !== 'true') {
-        window.location.href = 'login.html';
+        window.location.href = '../vista/login.html';
         return;
     }
 
@@ -34,4 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'login.html';
         });
     }
+
+
+async function CerrarSesion() {
+    try {
+        const respuesta = await fetch("../Modelo/cerrarSesion.php", { method: "POST" });
+
+        if (!respuesta.ok) {
+            throw new Error("Error al cerrar sesion");
+        }
+
+        // Si la sesión se cierra correctamente en el servidor:
+        localStorage.clear();
+        window.location.href = "../Vista/login.html";
+
+    } catch (error) {
+        console.error("Error al cerrar sesion:", error);
+    }
+}
 });

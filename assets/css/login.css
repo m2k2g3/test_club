@@ -19,11 +19,11 @@ body {
 .aaaaa {
     width: 420px;
     max-width: 100%;
-    background: rgba(128, 0, 128, 0.4);
+    background: rgba(128, 0, 128, 0.3);
     backdrop-filter: blur(8px);
     color: #fff;
     padding: 40px 30px;
-    border-radius: 15px;
+    border-radius: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
