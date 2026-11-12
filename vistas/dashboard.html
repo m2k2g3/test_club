@@ -12,95 +12,134 @@
 
 <body class="bg-light">
 
-    <div class="header-mr d-flex justify-content-between align-items-center shadow-sm">
+    <!-- Cabecera del panel -->
+    <div class="header-mr d-flex justify-content-between align-items-center shadow-sm p-3 bg-white">
         <h1 class="h4 m-0">Club Frambuesa - Panel principal</h1>
         <div class="text-end">
-            <small id="NombreUsuario"></small>
-            
-                <button id="btnCerrarSesion" class="btn btn-danger btn-sm mt-1">Cerrar Sesión <i class="bi bi-box-arrow-right"></i></button>
-
+            <small id="NombreUsuario" class="d-block text-muted mb-1"></small>
+            <button id="btnCerrarSesion" class="btn btn-danger btn-sm">
+                Cerrar Sesión <i class="bi bi-box-arrow-right"></i>
+            </button>
         </div>
     </div>
 
     <div class="container py-4">
-        <!-- Cambiar lo iconos a unos mas acorde con su función -->
-        <div id="seccion-Admin">
-            <h5 class="mb-4 fw-bold text-white">Módulos del club de asociados</h5>
+        
+        <!-- SECCIÓN ADMINISTRADOR -->
+        <div id="seccion-Admin" class="mb-5">
+            <h5 class="mb-4 fw-bold text-dark">Módulos del club de asociados</h5>
 
-            <div class="row g-4 mb-4" id="tarjetas-Admin">
+            <div class="row g-4" id="tarjetas-Admin">
+                
+                <!-- Gestión de Asociados -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3">
-                        <i class="bi bi-layout-wtf icono-nl1"></i>
-                        <h4 class="text-purple mt-2">Asociado</h4>
+                    <div class="card modulo-card shadow-sm p-3 h-100">
+                        <i class="bi bi-people icono-nl1 fs-3 text-primary"></i>
+                        <h4 class="text-purple mt-2 fs-5">Asociado</h4>
                         <strong>Gestión de asociados</strong>
                         <p class="small text-muted mt-2">Administra la información de los asociados del club.</p>
+                        
                     </div>
                 </div>
 
+                <!-- Administración -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3">
-                        <i class="bi bi-columns icono-nl1"></i>
-                        <h4 class="text-purple mt-2">Administración</h4>
+                    <div class="card modulo-card shadow-sm p-3 h-100">
+                        <i class="bi bi-gear icono-nl1 fs-3 text-primary"></i>
+                        <h4 class="text-purple mt-2 fs-5">Administración</h4>
                         <strong>Gestión de administración</strong>
                         <p class="small text-muted mt-2">Administra la información general y configuración.</p>
                     </div>
                 </div>
 
+                <!-- Préstamos -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3">
-                        <i class="bi bi-layout-wtf icono-nl1"></i>
-                        <h4 class="text-purple mt-2">Préstamos</h4>
+                    <div class="card modulo-card shadow-sm p-3 h-100">
+                        <i class="bi bi-cash-coin icono-nl1 fs-3 text-primary"></i>
+                        <h4 class="text-purple mt-2 fs-5">Préstamos</h4>
                         <strong>Gestión de préstamos</strong>
                         <p class="small text-muted mt-2">Administra la información de los préstamos activos.</p>
                     </div>
                 </div>
 
+                <!-- Actividades -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3">
-                        <i class="bi bi-columns-gap icono-nl1"></i>
-                        <h4 class="text-purple mt-2">Actividades</h4>
+                    <div class="card modulo-card shadow-sm p-3 h-100">
+                        <i class="bi bi-calendar-event icono-nl1 fs-3 text-primary"></i>
+                        <h4 class="text-purple mt-2 fs-5">Actividades</h4>
                         <strong>Gestión de actividades</strong>
                         <p class="small text-muted mt-2">Registra eventos pro-fondos y dinero recaudado.</p>
-                        <!-- el autocompletado es una maravilla -> eso fue el autocompletado: pero no es perfecto. A veces puede generar texto que no tiene sentido o que no es relevante para la conversación. Por eso, siempre es importante revisar y editar el texto generado antes de usarlo. -->
                         <a href="actividades.html" class="stretched-link"></a>
                     </div>
                 </div>
 
+                <!-- Reportes -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3">
-                        <i class="bi bi-columns icono-nl1"></i>
-                        <h4 class="text-purple mt-2">Reportes</h4>
+                    <div class="card modulo-card shadow-sm p-3 h-100">
+                        <i class="bi bi-file-earmark-bar-graph icono-nl1 fs-3 text-primary"></i>
+                        <h4 class="text-purple mt-2 fs-5">Reportes</h4>
                         <strong>Consultas y saldos</strong>
                         <p class="small text-muted mt-2">Ver reportes y estados de cuenta del club.</p>
                         <a href="reportes.html" class="stretched-link"></a>
                     </div>
                 </div>
+
+                <!-- Pagos -->
+                <div class="col-md-4">
+                    <div class="card modulo-card shadow-sm p-3 h-100">
+                        <i class="bi bi-wallet2 icono-nl1 fs-3 text-primary"></i>
+                        <h4 class="text-purple mt-2 fs-5">Pagos</h4>
+                        <strong>Abono de cuentas</strong>
+                        <p class="small text-muted mt-2">Gestiona el registro de pagos y abonos de los asociados.</p>
+                        <a href="pagos.html" class="stretched-link"></a>
+                    </div>
+                </div>
+
             </div>
         </div>
 
+        <!-- SECCIÓN ASOCIADO  -->
         <div id="seccion-Asociado">
-            <h5 class="mb-4 fw-bold text-white">Portal del Asociado</h5>
+            <h5 class="mb-4 fw-bold text-dark">Portal del Asociado</h5>
             <div class="row g-4" id="tarjetas-Asociado">
-                <div class="col-md-3">
-                    <div class="card modulo-card asociado shadow-sm p-3">
-                        <i class="bi bi-camera-reels icono-nl1"></i>
-                        <h4 class="text-purple mt-2">Mi perfil</h4>
-                        <p class="small text-muted mt-2">Ver mis datos y préstamos.</p>
+                
+                <!-- Mi Perfil -->
+                <div class="col-md-4">
+                    <div class="card modulo-card asociado shadow-sm p-3 h-100">
+                        <i class="bi bi-person-badge icono-nl1 fs-3 text-success"></i>
+                        <h4 class="text-purple mt-2 fs-5">Mi perfil</h4>
+                        <p class="small text-muted mt-2">Consulta tus datos personales y estado de tus préstamos.</p>
+                        <a href="perfil.html"></a>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="card modulo-card asociado shadow-sm p-3">
-                        <i class="bi bi-bag icono-nl1"></i>
-                        <h4 class="text-purple mt-2">Mis Pagos</h4>
-                        <p class="small text-muted mt-2">Ver mis abonos y mis préstamos.</p>
+                <!-- Mis Pagos -->
+                <div class="col-md-4">
+                    <div class="card modulo-card asociado shadow-sm p-3 h-100">
+                        <i class="bi bi-receipt icono-nl1 fs-3 text-success"></i>
+                        <h4 class="text-purple mt-2 fs-5">Mis Pagos</h4>
+                        <p class="small text-muted mt-2">Revisa el historial de tus abonos y cuotas pagadas.</p>
+                        <a href="pagos.html"></a>
                     </div>
                 </div>
+
+                <!-- Mis Actividades -->
+                <div class="col-md-4">
+                    <div class="card modulo-card asociado shadow-sm p-3 h-100">
+                        <i class="bi bi-calendar-check icono-nl1 fs-3 text-success"></i>
+                        <h4 class="text-purple mt-2 fs-5">Actividades</h4>
+                        <p class="small text-muted mt-2">Visualiza las actividades programadas del club.</p>
+                        <a href="actividades.html" class="stretched-link"></a>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-    </div>
+    </div> 
 
-    <script src="../controler/dashboard.js"></script>    
+   
+    <script src="../controler/dashboard.js"></script>
 </body>
+
 </html>

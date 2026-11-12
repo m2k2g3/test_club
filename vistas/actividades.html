@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-co">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,285 +10,121 @@
     <link rel="stylesheet" href="../assets/css/Registros.css">
 </head>
 
-<body>
-    <nav class="top-navbar d-flex justify-content-between align-items-center">
-        <h1 class="brand-title"><i class="bi bi-calendar-event"></i> Club Frambuesa
-        </h1>
-        <div>
-            <a href="dashboard.html" class="btn-nav-back">
-                <i class="bi bi-arrow-left-circle"></i> Inicio
-            </a>
+<body class="bg-light">
+
+  
+    <header class="header-mr d-flex justify-content-between align-items-center gap-3 p-3 bg-dark text-white">
+        <h1 class="h3 mb-0">Actividades del club</h1>
+        <a class="btn btn-outline-light" href="dashboard.html">
+            <i class="bi bi-arrow-left"></i>
+            Volver al panel
+        </a>
+    </header>
+
+    <main class="container py-4">
+       
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-3">
+            <p class="mb-0 text-muted">
+                Consulta las actividades programadas y su información.
+            </p>
+            <button id="nuevaActividad" class="btn btn-success d-none" type="button">
+                <i class="bi bi-plus-lg"></i>
+                Nueva actividad
+            </button>
         </div>
-    </nav>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 col-xl-9">
+        <div class="card shadow-sm">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Actividad</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Municipio</th>
+                            <th scope="col">Total recaudado</th>
+                            <th id="encabezadoAcciones" class="d-none" scope="col">
+                                Acciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaActividades">
+                        <tr>
+                            <td colspan="5" class="text-center py-4">
+                                Cargando actividades ...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
 
-
-
-                <div class="form-card">
-                    <div class="form-header d-flex align-items-center gap-3">
-                        <div class="header-icon-box">
-                            <i class="bi bi-calendar2-plus"></i>
-                        </div>
-                        <div><h2>Registro de Actividades</h2>
-                            <p>Una descriocion para este formulario</p>
-                        </div>
-                    </div>
-
-
-
-                    <form id="formActividades">
-                        <div class="section-title">
-                            <i class="bi bi-info-circle"></i> Datos de la Actividad
-                        </div>
-
-                        <div class="row g-3">
-                            <div class="col-md-8">
-                                <label for="nombreActividad" class="form-label">
-                                    <i class="bi bi-tag text-purple"></i> Nombre o Título del Evento *
-                                </label>
-                                <input type="text" class="form-control" id="nombreActividad" required 
-                                       placeholder="Ej: Gran Bingo Bailable Pro-Fondos Remodelación">
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="tipoActividad" class="form-label">
-                                    <i class="bi bi-bookmark text-purple"></i> Tipo de Actividad *
-                                </label>
-                                <select class="form-select" id="tipoActividad" required>
-                                    <option value="" disabled selected>Seleccione categoría...</option>
-                                    <option value="Pro-Fondos">Evento Pro-Fondos / Bazar</option>
-                                    <option value="Deportiva">Torneo / Encuentro Deportivo</option>
-                                    <option value="Cultural">Cultural / Familiar</option>
-                                    <option value="Asamblea">Asamblea / Reunión de Socios</option>
-                                    <option value="Capacitación">Taller / Capacitación</option>
-                                    <option value="Celebración">Celebración Especial / Aniversario</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="responsable" class="form-label">
-                                    <i class="bi bi-person-badge text-purple"></i> Coordinador / Responsable *
-                                </label>
-                                <input type="text" class="form-control" id="responsable" required 
-                                       placeholder="Nombre y apellido del encargado">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="telefonoContacto" class="form-label">
-                                    <i class="bi bi-telephone text-purple"></i> Teléfono de Contacto *
-                                </label>
-                                <input type="tel" class="form-control" id="telefonoContacto" required 
-                                       placeholder="Ej: 310 123 4567">
-                            </div>
-                        </div>
-
-                        <!-- Sección 2: Programación y Lugar -->
-                        <div class="section-title">
-                            <i class="bi bi-clock-history"></i> Programación, Horarios y Ubicación
-                        </div>
-
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <label for="fechaActividad" class="form-label">
-                                    <i class="bi bi-calendar3 text-purple"></i> Fecha de Realización *
-                                </label>
-                                <input type="date" class="form-control" id="fechaActividad" required>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="horaInicio" class="form-label">
-                                    <i class="bi bi-alarm text-purple"></i> Hora de Inicio *
-                                </label>
-                                <input type="time" class="form-control" id="horaInicio" required>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="horaFin" class="form-label">
-                                    <i class="bi bi-alarm-fill text-purple"></i> Hora Estimada de Fin
-                                </label>
-                                <input type="time" class="form-control" id="horaFin">
-                            </div>
-
-                            <div class="col-md-8">
-                                <label for="lugarActividad" class="form-label">
-                                    <i class="bi bi-geo-alt text-purple"></i> Espacio o Ubicación *
-                                </label>
-                                <select class="form-select" id="lugarActividad" required>
-                                    <option value="" disabled selected>Seleccione espacio del club...</option>
-                                    <option value="Sede Principal - Salón Las Palmas">Sede Principal - Salón Las Palmas</option>
-                                    <option value="Polideportivo y Canchas">Polideportivo y Canchas</option>
-                                    <option value="Zona de Jardines y Kiosko">Zona de Jardines y Kiosko</option>
-                                    <option value="Piscina y Terraza Social">Piscina y Terraza Social</option>
-                                    <option value="Salón de Conferencias">Salón de Conferencias</option>
-                                    <option value="Lugar Externo / Fuera de Sede">Lugar Externo / Fuera de Sede</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="cupoMaximo" class="form-label">
-                                    <i class="bi bi-people text-purple"></i> Cupo Máximo (Aforo)
-                                </label>
-                                <input type="number" class="form-control" id="cupoMaximo" min="1" placeholder="Ej: 150">
-                            </div>
-                        </div>
-
-                        <!-- Sección 3: Presupuesto y Finanzas -->
-                        <div class="section-title">
-                            <i class="bi bi-cash-stack"></i> Presupuesto y Meta Financiera
-                        </div>
-
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <label for="costoPresupuesto" class="form-label">
-                                    <i class="bi bi-wallet2 text-purple"></i> Presupuesto / Gasto Estimado
-                                </label>
-                                <div class="input-group">
-                                    <span class="input-group-text">$</span>
-                                    <input type="number" class="form-control" id="costoPresupuesto" placeholder="0" min="0">
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="metaRecaudacion" class="form-label">
-                                    <i class="bi bi-graph-up-arrow text-purple"></i> Meta de Recaudación Esperada
-                                </label>
-                                <div class="input-group">
-                                    <span class="input-group-text">$</span>
-                                    <input type="number" class="form-control" id="metaRecaudacion" placeholder="0" min="0">
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="valorEntrada" class="form-label">
-                                    <i class="bi bi-ticket-perforated text-purple"></i> Valor Boleta / Entrada ($)
-                                </label>
-                                <div class="input-group">
-                                    <span class="input-group-text">$</span>
-                                    <input type="number" class="form-control" id="valorEntrada" placeholder="0 (Libre)">
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="estadoActividad" class="form-label">
-                                    <i class="bi bi-flag text-purple"></i> Estado Inicial de la Actividad *
-                                </label>
-                                <select class="form-select" id="estadoActividad" required>
-                                    <option value="Planificada" selected>Planificada</option>
-                                    <option value="Convocatoria Abierta">Convocatoria / Venta de Boletas Abierta</option>
-                                    <option value="En Curso">En Curso</option>
-                                    <option value="Finalizada">Finalizada</option>
-                                    <option value="Cancelada">Cancelada</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">
-                                    <i class="bi bi-calculator text-purple"></i> Ganancia Proyectada Pro-Fondos
-                                </label>
-                                <div class="info-summary-box py-2 my-0 d-flex justify-content-between align-items-center">
-                                    <span class="summary-title mb-0">Balance Proyectado:</span>
-                                    <span class="summary-value fs-5" id="balanceCalculado">$ 0 COP</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Sección 4: Requerimientos y Logística -->
-                        <div class="section-title">
-                            <i class="bi bi-card-checklist"></i> Recursos Requeridos y Descripción
-                        </div>
-
-                        <div class="row g-3">
-                            <div class="col-12">
-                                <label class="form-label">Recursos y Servicios Solicitados al Club:</label>
-                                <div class="custom-radio-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="reqSonido" value="Sonido">
-                                        <label class="form-check-label" for="reqSonido">Equipo de Sonido / Micrófonos</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="reqMesas" value="Mobiliario">
-                                        <label class="form-check-label" for="reqMesas">Mesas y Sillas</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="reqProyector" value="Audiovisual">
-                                        <label class="form-check-label" for="reqProyector">Proyector / Pantalla</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="reqRefrigerios" value="Refrigerios">
-                                        <label class="form-check-label" for="reqRefrigerios">Servicio de Cafetería / Refrigerio</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="reqSeguridad" value="Seguridad">
-                                        <label class="form-check-label" for="reqSeguridad">Personal de Apoyo / Seguridad</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <label for="descripcionActividad" class="form-label">
-                                    <i class="bi bi-text-paragraph text-purple"></i> Descripción Detallada y Programa del Evento
-                                </label>
-                                <textarea class="form-control" id="descripcionActividad" rows="3" 
-                                          placeholder="Detalle el objetivo del evento, cronograma de actividades y observaciones logísticas..."></textarea>
-                            </div>
-                        </div>
-
-                        <!-- Botones de Acción -->
-                        <div class="form-actions">
-                            <a href="dashboard.html" class="btn btn-club-light">
-                                <i class="bi bi-x-circle"></i> Cancelar / Volver
-                            </a>
-                            <button type="reset" class="btn btn-club-secondary">
-                                <i class="bi bi-arrow-counterclockwise"></i> Limpiar Formulario
-                            </button>
-                            <button type="submit" class="btn btn-club-primary">
-                                <i class="bi bi-check2-circle"></i> Guardar Actividad
-                            </button>
-                        </div>
-
-                    </form>
-                </div>
-
+    <!-- Contenedor de Alertas Toast -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastActividad" class="toast align-items-center text-bg-success border-0" role="status"
+            aria-live="polite" aria-atomic="true">
+            <div class="d-flex">
+                <div id="mensajeActividades" class="toast-body"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Cerrar"></button>
             </div>
         </div>
     </div>
 
-    <!-- Script de interactividad básica y cálculo dinámico -->
-    <script>
-        const inputPresupuesto = document.getElementById('costoPresupuesto');
-        const inputMeta = document.getElementById('metaRecaudacion');
-        const balanceTexto = document.getElementById('balanceCalculado');
+    <!-- Modal de Actividad -->
+    <div class="modal fade" id="modalActividad" tabindex="-1" aria-labelledby="tituloModalActividad" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="formActividad">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="tituloModalActividad">
+                            Nueva actividad
+                        </h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    
+                    <!-- 3. CORREGIDO: Todos los inputs y campos ahora están dentro del modal-body -->
+                    <div class="modal-body">
+                        <input type="hidden" id="idActividad" />
 
-        function actualizarBalance() {
-            const gasto = parseFloat(inputPresupuesto.value) || 0;
-            const meta = parseFloat(inputMeta.value) || 0;
-            const balance = meta - gasto;
-            balanceTexto.textContent = '$ ' + balance.toLocaleString('es-CO') + ' COP';
-            if (balance >= 0) {
-                balanceTexto.style.color = '#198754';
-            } else {
-                balanceTexto.style.color = '#dc3545';
-            }
-        }
+                        <div class="mb-3">
+                            <label for="nombreActividad" class="form-label">
+                                Nombre de la actividad
+                            </label>
+                            <input type="text" class="form-control" id="nombreActividad" maxlength="100" required>
+                        </div>
 
-        inputPresupuesto.addEventListener('input', actualizarBalance);
-        inputMeta.addEventListener('input', actualizarBalance);
+                        <div class="mb-3">
+                            <label for="fechaEvento" class="form-label">Fecha del evento</label>
+                            <input type="date" class="form-control" id="fechaEvento" required />
+                        </div>
 
-        document.getElementById('formActividades').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nombre = document.getElementById('nombreActividad').value.trim();
-            const fecha = document.getElementById('fechaActividad').value;
-            if (!nombre || !fecha) {
-                alert('Por favor complete los campos obligatorios (*).');
-                return;
-            }
-            alert('¡Actividad "' + nombre + '" registrada exitosamente en el sistema!');
-            window.location.href = 'dashboard.html';
-        });
-    </script>
+                        <div class="mb-3">
+                            <label for="municipio" class="form-label">Municipio</label>
+                            <input type="text" class="form-control" id="municipio" maxlength="50" required />
+                        </div>
+
+                        <div id="campoTotalRecaudado" class="mb-3 d-none">
+                            <label for="totalRecaudado" class="form-label">
+                                Total recaudado (opcional; completar al finalizar)
+                            </label>
+                            <input type="number" class="form-control" id="totalRecaudado" min="0" step="0.01"
+                                placeholder="Ej .: 1500000.00" />
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button id="guardarActividad" type="submit" class="btn btn-primary">Guardar actividad</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 4. CORREGIDO: Se eliminó el espacio en la ruta de acceso al JS -->
+    <script src="../Controladores/actividades.js"></script>
 </body>
+
 </html>
