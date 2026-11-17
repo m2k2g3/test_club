@@ -14,7 +14,7 @@ class Actividad
 
     public function obtenerActividades()
     {
-        
+
         $sql = "SELECT * FROM actividades ORDER BY fechaEvento ASC";
 
         // Preparamos la consulta usando la propiedad de la clase
@@ -33,38 +33,40 @@ class Actividad
                 VALUES (:nombreActividad, :fechaEvento, :municipio)";
         $consulta = $this->conexion->prepare($sql);
         return $consulta->execute([
-                ":nombreActividad" => $datos['nombreActividad'],
-                ":fechaEvento" =>  $datos [' fechaEvento' ],
-                ":municipio" => $datos['municipio']
-            ]);
+            ":nombreActividad" => $datos['nombreActividad'],
+            ":fechaEvento" =>  $datos[' fechaEvento'],
+            ":municipio" => $datos['municipio']
+        ]);
     }
 
-    public function eliminar($idActividad) {
+    public function eliminar($idActividad)
+    {
         $sql = "DELETE FROM actividades WHERE idActividad = :idActividad";
         $consulta = $this->conexion->prepare($sql);
         $consulta->execute([':idActividad' => $idActividad]);
         return $consulta->rowCount() > 0; // Retorna true si se elimino alguna fila
     }
 
-public function editar($datos){
-    $sql = "UPDATE actividades SET nombreActividad = :nombreActividad, fechaEvento = :fechaEvento, municipio = :municipio, totalRecaudado = :totalRecaudado WHERE idActividad = :idActividad";
-    $consulta = $this->conexion->prepare($sql);
-    return $consulta->execute([
-        ":nombreActividad" => $datos['nombreActividad'],
-        ":fechaEvento" => $datos['fechaEvento'],
-        ":municipio" => $datos['municipio'],
-        ":totalRecaudado" => $datos['totalRecaudado'],
-        ":idActividad" => $datos['idActividad']
-]);
+    public function editar($datos)
+    {
+        $sql = "UPDATE actividades SET nombreActividad = :nombreActividad, fechaEvento = :fechaEvento, municipio = :municipio, totalRecaudado = :totalRecaudado WHERE idActividad = :idActividad";
+        $consulta = $this->conexion->prepare($sql);
+        return $consulta->execute([
+            ":nombreActividad" => $datos['nombreActividad'],
+            ":fechaEvento" => $datos['fechaEvento'],
+            ":municipio" => $datos['municipio'],
+            ":totalRecaudado" => $datos['totalRecaudado'],
+            ":idActividad" => $datos['idActividad']
+        ]);
 
-if ($consulta -> rowCount() > 0){
-    return true;
-}
+        if ($consulta->rowCount() > 0) {
+            return true;
+        }
 
-$verificar =$this-> Conexion->prepare("SELECT 1 FROM activiades WHERE idActividad = :idactividad");
-$verificar->execute(['idActividad' => $datos['idActividad']]);
+        $verificar = $this->Conexion->prepare("SELECT 1 FROM activiades WHERE idActividad = :idactividad");
+        $verificar->execute(['idActividad' => $datos['idActividad']]);
 
-return (bool) $verificar->fetchColumn(); //retorna true si el registro existe y false si no
+        return (bool) $verificar->fetchColumn(); //retorna true si el registro existe y false si no
 
-}
+    }
 }
