@@ -24,13 +24,13 @@
     </div>
 
     <div class="container py-4">
-        
+
         <!-- SECCIÓN ADMINISTRADOR -->
         <div id="seccion-Admin" class="mb-5">
             <h5 class="mb-4 fw-bold text-dark">Módulos del club de asociados</h5>
 
             <div class="row g-4" id="tarjetas-Admin">
-                
+
                 <!-- Gestión de Asociados -->
                 <div class="col-md-4">
                     <div class="card modulo-card shadow-sm p-3 h-100">
@@ -38,7 +38,7 @@
                         <h4 class="text-purple mt-2 fs-5">Asociado</h4>
                         <strong>Gestión de asociados</strong>
                         <p class="small text-muted mt-2">Administra la información de los asociados del club.</p>
-                        
+                        <a href="registro.html" class="stretched-link"></a>
                     </div>
                 </div>
 
@@ -59,6 +59,7 @@
                         <h4 class="text-purple mt-2 fs-5">Préstamos</h4>
                         <strong>Gestión de préstamos</strong>
                         <p class="small text-muted mt-2">Administra la información de los préstamos activos.</p>
+                        <a href="prestamos.html" class="stretched-link"></a>
                     </div>
                 </div>
 
@@ -80,7 +81,9 @@
                         <h4 class="text-purple mt-2 fs-5">Reportes</h4>
                         <strong>Consultas y saldos</strong>
                         <p class="small text-muted mt-2">Ver reportes y estados de cuenta del club.</p>
-                        <a href="reportes.html" class="stretched-link"></a>
+                        <a href="#"
+                            onclick="alert('El módulo de Reportes estará disponible próximamente.'); return false;"
+                            class="stretched-link"></a>
                     </div>
                 </div>
 
@@ -102,14 +105,14 @@
         <div id="seccion-Asociado">
             <h5 class="mb-4 fw-bold text-dark">Portal del Asociado</h5>
             <div class="row g-4" id="tarjetas-Asociado">
-                
+
                 <!-- Mi Perfil -->
                 <div class="col-md-4">
                     <div class="card modulo-card asociado shadow-sm p-3 h-100">
                         <i class="bi bi-person-badge icono-nl1 fs-3 text-success"></i>
                         <h4 class="text-purple mt-2 fs-5">Mi perfil</h4>
                         <p class="small text-muted mt-2">Consulta tus datos personales y estado de tus préstamos.</p>
-                        <a href="perfil.html" class="stretched-link" ></a>
+                        <a href="perfil.html" class="stretched-link"></a>
                     </div>
                 </div>
 
@@ -136,9 +139,9 @@
             </div>
         </div>
 
-    </div> 
+    </div>
 
-   
+
     <script src="../controler/dashboard.js"></script>
 </body>
 

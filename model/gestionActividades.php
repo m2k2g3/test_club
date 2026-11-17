@@ -1,6 +1,7 @@
 <?php
+// gestionActividades.php
 session_start();
-header("Content-Type: appplication/json; charset=UTF-8");
+header("Content-Type: application/json; charset=UTF-8");
 
 function leerDatos()
 {
@@ -13,12 +14,12 @@ function leerDatos()
 }
 
 try {
-    if (!isset($_SESSION["documento"], $_SESSION["rol"])) {
+    if (!isset($_SESSION["email"], $_SESSION["rol"])) {
         http_response_code(401);
         throw new Exception("Inciar sesion para consultar las actividades");
     }
 
-    $metodo = $_SERVER["REQUEST_MRTHOD"];
+    $metodo = $_SERVER["REQUEST_METHOD"];
 
     if (!in_array($metodo, ["GET", "POST", "PUT", "DELETE"], true)) {
         http_response_code(405);
@@ -37,7 +38,7 @@ try {
     switch ($metodo) {
         case "GET":
             $resultado = [
-                "sussess" => true,
+                "success" => true,
                 "rol" => $_SESSION["rol"],
                 "actividades" => $actividad->obtenerActividades()
             ];
@@ -59,7 +60,7 @@ try {
     http_response_code(500);
     echo json_encode([
         "success" => false,
-        "mensage" => "Error en la base de datos: " . $e->getMessage()
+        "message" => "Error en la base de datos: " . $e->getMessage()
     ]);
 } catch (Exception $e) {
     echo json_encode([
