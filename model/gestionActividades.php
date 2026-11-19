@@ -13,7 +13,7 @@ function leerDatos()
     return $datos;
 }
 
-function validarActividades(array $datos)
+function validarActividades(array $datos): array
 {
     $nombre = $datos['nombreActividad'] ?? null;
     $fecha = $datos['fechaEvento'] ?? null;
@@ -28,14 +28,21 @@ function validarActividades(array $datos)
             "ingrese un nobre y municipio validos"
         );
     }
+
+    $f = is_string($fecha) ? DateTime::createFromFormat('Y-m-d', $fecha) : false;
+    if (!$f || $f->format('Y-m-d') !== $fecha) {
+        http_response_code(400);
+        throw new Exception("Ingrese una fecha válida (AAAA-MM-DD)");
+    }
+
     return [
         "nombreActividad" => trim($nombre),
         "fechaEvento" => $fecha,
-        "municio" => trim($municipio)
+        "municipio" => trim($municipio)
     ];
 }
 
-function validarID(int $id)
+function validarID($id): int
 {
     $idActividad = filter_var($id, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]]);
     if ($idActividad === false) {
@@ -84,7 +91,8 @@ try {
             $actividad->guardar($datos);
             $resultado = [
                 "success" => true,
-                "message" => "Actividad creada exitosamente"
+                "mensaje" => "Actividad creada exitosamente.",
+                "message" => "Actividad creada exitosamente."
             ];
             http_response_code(201);
             break;
@@ -106,29 +114,33 @@ try {
 
         case "DELETE":
             $datos = leerDatos();
-            $idActividad = validarActividades($datos["idActividad"] ?? null);
+            $idActividad = validarID($datos["idActividad"] ?? null);
 
-            if (!$actividad->eliminar($datos)) {
+            if (!$actividad->eliminar($idActividad)) {
                 http_response_code(404);
                 throw new Exception("no se encontro la activida :<");
             }
             $resultado = [
                 "success" => true,
-                "mensaje" => "Actividad se elimino correctamente :>"
+                "mensaje" => "Actividad se elimino correctamente :>",
+                
             ];
             break;
     }
     echo json_encode($resultado);
 } catch (PDOException $e) {
+    error_log("gestionActividades.php: " . $e->getMessage());
     http_response_code(500);
     echo json_encode([
         "success" => false,
         "message" => "Error en la base de datos: " . $e->getMessage()
     ]);
 } catch (Exception $e) {
+     if (http_response_code() === 200) {
+        http_response_code(500);
+    }
     echo json_encode([
         "success" => false,
         "message" => $e->getMessage()
-
     ]);
 }

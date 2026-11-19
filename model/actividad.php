@@ -28,13 +28,14 @@ class Actividad
 
     public function guardar(array $datos)
     {
-        $sql = "INSERT INTO actividades (nombreActividad, fechaEvento, municipio)
-                VALUES (:nombreActividad, :fechaEvento, :municipio)";
+        $sql = "INSERT INTO actividades (nombreActividad, fechaEvento, municipio, totalRecaudado)
+                VALUES (:nombreActividad, :fechaEvento, :municipio, :totalRecaudado)";
         $consulta = $this->conexion->prepare($sql);
         return $consulta->execute([
             ":nombreActividad" => $datos['nombreActividad'],
-            ":fechaEvento" =>  $datos['fechaEvento'],
-            ":municipio" => $datos['municipio']
+            ":fechaEvento"     => $datos['fechaEvento'],
+            ":municipio"       => $datos['municipio'],
+            ":totalRecaudado"  => $datos['totalRecaudado'] ?? 0.00
         ]);
     }
 
