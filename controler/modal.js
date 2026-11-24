@@ -6,6 +6,13 @@ const formActividad = document.getElementById("formActividad");
 const toastElemento = document.getElementById("toastActividad");
 const toastBootstrap = toastElemento ? new bootstrap.Toast(toastElemento) : null;
 
+// Evitar la advertencia de accesibilidad (aria-hidden) al cerrar el modal
+modalElemento?.addEventListener("hide.bs.modal", () => {
+    if (document.activeElement && modalElemento.contains(document.activeElement)) {
+        document.activeElement.blur();
+    }
+});
+
 function mostrarMensaje(texto, esError = false) {
     const contenedor = document.getElementById("mensajeActividades");
     if (contenedor && toastBootstrap) {

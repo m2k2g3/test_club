@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ventana arrastrable</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <button type="button" id="openModal">Abrir ventana</button>
+
+  <dialog id="window" class="window" aria-labelledby="windowTitle">
+    <header class="window-header" id="dragHandle">
+      <span class="window-title" id="windowTitle">
+        <span class="grip" aria-hidden="true"></span>
+        Mi ventana
+      </span>
+
+      <div class="window-actions">
+        <button type="button" id="minimizeBtn" aria-label="Minimizar" aria-pressed="false">−</button>
+        <button type="button" id="closeBtn" aria-label="Cerrar">×</button>
+      </div>
+    </header>
+
+    <main class="window-content">
+      <h2>¡Hola, desarrollador!</h2>
+      <p>Esta ventana se puede arrastrar por la pantalla.</p>
+
+      <div class="info-card">
+        <strong>Pointer Events</strong>
+        <span>Mouse, lápiz y pantalla táctil.</span>
+      </div>
+
+      <form method="dialog">
+        <button type="submit" class="action">Entendido</button>
+      </form>
+    </main>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

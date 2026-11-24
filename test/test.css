@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f8fafc;
+}
+
+#openModal {
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.window {
+  position: fixed;
+  margin: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(420px, calc(100vw - 32px));
+  padding: 0;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
+
+.window::backdrop {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 12px 12px 0 0;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.window-header:active {
+  cursor: grabbing;
+}
+
+.window-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.window-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.window-actions button {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  color: #111827;
+  cursor: pointer;
+}
+
+.window-content {
+  padding: 20px;
+}
+
+.window-content h2 {
+  margin: 0 0 8px;
+}
+
+.window-content p {
+  margin: 0 0 16px;
+  color: #4b5563;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.action {
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: #111827;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Estado minimizado */
+.window.is-minimized .window-content {
+  display: none;
+}
+
+.window.is-minimized {
+  width: auto;
+  min-width: 240px;
+  border-radius: 10px;
+}
+
+.window.is-minimized .window-header {
+  border-bottom: 0;
+  border-radius: 10px;
+}
+
+.grip {
+  width: 10px;
+  height: 16px;
+  background: radial-gradient(circle, #9ca3af 1.5px, transparent 2px) 0 0 / 5px 6px;
+}
