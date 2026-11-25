@@ -5,13 +5,15 @@ const minimizeBtn = document.querySelector("#minimizeBtn");
 const handle = document.querySelector("#dragHandle");
 
 openBtn.addEventListener("click", () => dialog.showModal());
+closeBtn.addEventListener("click", () => dialog.close());
 
-closeBtn.addEventListener("click", () => {
+// Se ejecuta con cualquier cierre: botón ×, "Entendido" o tecla Esc
+dialog.addEventListener("close", () => {
   setMinimized(false);
   dialog.style.cssText = "";
 });
 
-// Minimizar y restaurar guardando posición/estilo
+// Minimizar y restaurar
 let minimized = false;
 let savedStyle = "";
 
@@ -33,22 +35,16 @@ function setMinimized(value) {
   }
 }
 
-minimizeBtn.addEventListener("click", () => {
-  setMinimized(!minimized);
-});
+minimizeBtn.addEventListener("click", () => setMinimized(!minimized));
 
 // Arrastrar con Pointer Events
 let dragging = false;
-let startX = 0;
-let startY = 0;
-let initialLeft = 0;
-let initialTop = 0;
+let startX = 0, startY = 0, initialLeft = 0, initialTop = 0;
 
 handle.addEventListener("pointerdown", (event) => {
   if (event.target.closest("button")) return;
 
   const rect = dialog.getBoundingClientRect();
-
   dragging = true;
   startX = event.clientX;
   startY = event.clientY;
@@ -65,14 +61,11 @@ handle.addEventListener("pointerdown", (event) => {
 handle.addEventListener("pointermove", (event) => {
   if (!dragging) return;
 
-  const deltaX = event.clientX - startX;
-  const deltaY = event.clientY - startY;
-
   const maxLeft = Math.max(0, window.innerWidth - dialog.offsetWidth);
   const maxTop = Math.max(0, window.innerHeight - dialog.offsetHeight);
 
-  const newLeft = Math.max(0, Math.min(initialLeft + deltaX, maxLeft));
-  const newTop = Math.max(0, Math.min(initialTop + deltaY, maxTop));
+  const newLeft = Math.max(0, Math.min(initialLeft + (event.clientX - startX), maxLeft));
+  const newTop = Math.max(0, Math.min(initialTop + (event.clientY - startY), maxTop));
 
   dialog.style.left = `${newLeft}px`;
   dialog.style.top = `${newTop}px`;
@@ -89,7 +82,7 @@ const stopDragging = (event) => {
 handle.addEventListener("pointerup", stopDragging);
 handle.addEventListener("pointercancel", stopDragging);
 
-// Recalcular límites al redimensionar la ventana del navegador
+// Mantener la ventana dentro de la pantalla al redimensionar el navegador
 window.addEventListener("resize", () => {
   if (!dialog.open) return;
   if (dialog.style.transform !== "none") return;
@@ -98,9 +91,6 @@ window.addEventListener("resize", () => {
   const maxLeft = Math.max(0, window.innerWidth - dialog.offsetWidth);
   const maxTop = Math.max(0, window.innerHeight - dialog.offsetHeight);
 
-  const left = Math.min(rect.left, maxLeft);
-  const top = Math.min(rect.top, maxTop);
-
-  dialog.style.left = `${Math.max(0, left)}px`;
-  dialog.style.top = `${Math.max(0, top)}px`;
+  dialog.style.left = `${Math.max(0, Math.min(rect.left, maxLeft))}px`;
+  dialog.style.top = `${Math.max(0, Math.min(rect.top, maxTop))}px`;
 });

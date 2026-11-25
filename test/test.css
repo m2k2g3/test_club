@@ -1,24 +1,38 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 body {
-  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  display: grid;
-  place-items: center;
-  font-family: system-ui, -apple-system, sans-serif;
-  background: #f8fafc;
+  overflow-y: auto;
+  padding: 20px;
+  background: url('../imagenes/1pixstudio-ai-generated-8008017_1920.jpg') no-repeat center center/cover;
+  color: #fff;
 }
 
 #openModal {
-  padding: 10px 18px;
-  border: 0;
-  border-radius: 6px;
-  background: #2563eb;
-  color: #fff;
+  padding: 10px 22px;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  background: #fff;
+  color: purple;
   font-size: 0.95rem;
+  font-weight: bold;
   cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: 0.3s;
+}
+
+#openModal:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-2px);
 }
 
 .window {
@@ -29,25 +43,27 @@ body {
   transform: translate(-50%, -50%);
   width: min(420px, calc(100vw - 32px));
   padding: 0;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background: #fff;
-  color: #222;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  background: rgba(128, 0, 128, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
 }
 
 .window::backdrop {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.45);
 }
 
 .window-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 16px;
-  background: #f3f4f6;
-  border-bottom: 1px solid #e5e7eb;
-  border-radius: 12px 12px 0 0;
+  padding: 14px 20px;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   cursor: grab;
   user-select: none;
   touch-action: none;
@@ -61,55 +77,93 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-weight: 600;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.grip {
+  width: 10px;
+  height: 16px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.75) 1.5px, transparent 2px) 0 0 / 5px 6px;
 }
 
 .window-actions {
   display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
 .window-actions button {
   width: 28px;
   height: 28px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background: #fff;
-  color: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  outline: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-weight: bold;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.window-actions button:hover {
+  background: #fff;
+  color: purple;
 }
 
 .window-content {
-  padding: 20px;
+  padding: 25px 30px;
 }
 
 .window-content h2 {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #fff;
 }
 
 .window-content p {
-  margin: 0 0 16px;
-  color: #4b5563;
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
 }
 
 .info-card {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 12px;
-  margin-bottom: 18px;
-  border-radius: 8px;
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
+  gap: 6px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+.info-card span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .action {
+  width: 100%;
+  height: 42px;
   padding: 8px 16px;
-  border: 0;
-  border-radius: 6px;
-  background: #111827;
-  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  background: #fff;
+  color: purple;
+  font-size: 15px;
+  font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.action:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-2px);
 }
 
 /* Estado minimizado */
@@ -120,16 +174,9 @@ body {
 .window.is-minimized {
   width: auto;
   min-width: 240px;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .window.is-minimized .window-header {
   border-bottom: 0;
-  border-radius: 10px;
-}
-
-.grip {
-  width: 10px;
-  height: 16px;
-  background: radial-gradient(circle, #9ca3af 1.5px, transparent 2px) 0 0 / 5px 6px;
 }
