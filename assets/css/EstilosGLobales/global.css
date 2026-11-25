@@ -1,5 +1,5 @@
 /* ===================================================
-   CLUB FRAMBUESA - ESTILOS GLOBALES
+   CLUB Acerías - ESTILOS GLOBALES
    =================================================== */
 
 * {
@@ -15,4 +15,27 @@ body {
     color: #ffffff;
     background: url('../../imagenes/fondo.jpg') no-repeat center center / cover;
     background-attachment: fixed;
+}
+
+/* Botón / enlace global para volver al dashboard */
+.btn-volver-dashboard {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 40px;
+    background: #ffffff;
+    color: purple;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-volver-dashboard:hover {
+    background: rgba(255, 255, 255, 0.85);
+    color: purple;
+    transform: translateY(-2px);
 }

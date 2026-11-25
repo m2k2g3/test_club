@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="../assets/favicon/favicon.ico" />
   <title>Ventana arrastrable</title>
-  <link rel="stylesheet" href="test.css" />
+  <link rel="stylesheet" href="../assets/css/EstilosGLobales/global.css">
+  <link rel="stylesheet" href="test.css">
 </head>
+
 <body>
+  <button type="button" id="btn-volver" onclick="window.location.href='../vistas/dashboard.html'">
+    Volver <i class="bi bi-box-arrow-right"></i>
+  </button>
   <button type="button" id="openModal">Abrir ventana</button>
 
   <dialog id="window" class="window" aria-labelledby="windowTitle">
@@ -39,4 +46,5 @@
 
   <script src="test.js"></script>
 </body>
+
 </html>
