@@ -17,7 +17,7 @@ function mostrarMensaje(texto, esError = false) {
     const contenedor = document.getElementById("mensajeActividades");
     if (contenedor && toastBootstrap) {
         contenedor.textContent = texto;
-        toastElemento.className = `toast align-items-center text-bg-${esError ? 'danger' : 'success'} border-0`;
+        toastElemento.className = `toast toast-actividad align-items-center border-0 ${esError ? 'toast-error' : 'toast-exito'}`;
         toastBootstrap.show();
     }
 }

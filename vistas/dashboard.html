@@ -2,12 +2,13 @@
 <html lang="es-co">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../assets/favicon/favicon.ico" />
     <title>Club Frambuesa - Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/EstilosGLobales/global.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 
@@ -16,11 +17,11 @@
     <!-- Cabecera del panel -->
     <div class="header-mr d-flex justify-content-between align-items-center shadow-sm p-3">
         <h1 class="h4 m-0">Club Frambuesa - Panel principal</h1>
-        <div class="text-end">
-            <small id="NombreUsuario" class="text-while"></small>
-            <button id="btnCerrarSesion" class="btn btn-danger btn-sm mt-1">
+        <div class="d-flex align-items-center gap-2">
+            <small id="NombreUsuario" class="text-white"></small>
+            <button id="btnCerrarSesion" class="btn btn-danger btn-sm">
                 Cerrar Sesión <i class="bi bi-box-arrow-right"></i>
-            </button>   
+            </button>
         </div>
     </div>
 
@@ -28,71 +29,71 @@
 
         <!-- SECCIÓN ADMINISTRADOR -->
         <div id="seccion-Admin" class="mb-5">
-            <h5 class="mb-4 fw-bold text-dark">Módulos del club de asociados</h5>
+            <h5 class="mb-4 fw-bold text-white">Módulos del club de asociados</h5>
 
             <div class="row g-4" id="tarjetas-Admin">
 
                 <!-- Asociados Lista -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3 h-100">
-                        <i class="bi bi-people icono-nl1 fs-3 text-primary"></i>
-                        <h4 class="text-purple mt-2 fs-5">Asociado: </h4>
-                        <strong>Lista de asociados</strong>
-                        <p class="small text-muted mt-2">Visualiza los asociados</p>
+                    <div class="card modulo-card shadow-sm p-3 h-100 text-white">
+                        <i class="bi bi-people icono-nl1 fs-3 text-white"></i>
+                        <h4 class="text-white mt-2 fs-5">Asociado: </h4>
+                        <strong class="text-white">Lista de asociados</strong>
+                        <p class="small text-white mt-2">Visualiza los asociados</p>
                         <a href="asociados.html" class="stretched-link"></a>
                     </div>
                 </div>
 
                 <!-- Gestión de Asociados -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3 h-100">
-                        <i class="bi bi-people icono-nl1 fs-3 text-primary"></i>
-                        <h4 class="text-purple mt-2 fs-5">Asociado: </h4>
-                        <strong>Gestión de asociados</strong>
-                        <p class="small text-muted mt-2">Administra la información de los asociados del club.</p>
+                    <div class="card modulo-card shadow-sm p-3 h-100 text-white">
+                        <i class="bi bi-people icono-nl1 fs-3 text-white"></i>
+                        <h4 class="text-white mt-2 fs-5">Asociado: </h4>
+                        <strong class="text-white">Gestión de asociados</strong>
+                        <p class="small text-white mt-2">Administra la información de los asociados del club.</p>
                         <a href="registro.html" class="stretched-link"></a>
                     </div>
                 </div>
 
                 <!-- Administración -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3 h-100">
-                        <i class="bi bi-gear icono-nl1 fs-3 text-primary"></i>
-                        <h4 class="text-purple mt-2 fs-5">Administración</h4>
-                        <strong>Gestión de administración</strong>
-                        <p class="small text-muted mt-2">Administra la información general y configuración.</p>
+                    <div class="card modulo-card shadow-sm p-3 h-100 text-white">
+                        <i class="bi bi-gear icono-nl1 fs-3 text-white"></i>
+                        <h4 class="text-white mt-2 fs-5">Administración</h4>
+                        <strong class="text-white">Gestión de administración</strong>
+                        <p class="small text-white mt-2">Administra la información general y configuración.</p>
                     </div>
                 </div>
 
                 <!-- Préstamos -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3 h-100">
-                        <i class="bi bi-cash-coin icono-nl1 fs-3 text-primary"></i>
-                        <h4 class="text-purple mt-2 fs-5">Préstamos</h4>
-                        <strong>Gestión de préstamos</strong>
-                        <p class="small text-muted mt-2">Administra la información de los préstamos activos.</p>
+                    <div class="card modulo-card shadow-sm p-3 h-100 text-white">
+                        <i class="bi bi-cash-coin icono-nl1 fs-3 text-white"></i>
+                        <h4 class="text-white mt-2 fs-5">Préstamos</h4>
+                        <strong class="text-white">Gestión de préstamos</strong>
+                        <p class="small text-white mt-2">Administra la información de los préstamos activos.</p>
                         <a href="prestamos.html" class="stretched-link"></a>
                     </div>
                 </div>
 
                 <!-- Actividades -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3 h-100">
-                        <i class="bi bi-calendar-event icono-nl1 fs-3 text-primary"></i>
-                        <h4 class="text-purple mt-2 fs-5">Actividades</h4>
-                        <strong>Gestión de actividades</strong>
-                        <p class="small text-muted mt-2">Registra eventos pro-fondos y dinero recaudado.</p>
+                    <div class="card modulo-card shadow-sm p-3 h-100 text-white">
+                        <i class="bi bi-calendar-event icono-nl1 fs-3 text-white"></i>
+                        <h4 class="text-white mt-2 fs-5">Actividades</h4>
+                        <strong class="text-white">Gestión de actividades</strong>
+                        <p class="small text-white mt-2">Registra eventos pro-fondos y dinero recaudado.</p>
                         <a href="actividades.html" class="stretched-link"></a>
                     </div>
                 </div>
 
                 <!-- Reportes -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3 h-100">
-                        <i class="bi bi-file-earmark-bar-graph icono-nl1 fs-3 text-primary"></i>
-                        <h4 class="text-purple mt-2 fs-5">Reportes</h4>
-                        <strong>Consultas y saldos</strong>
-                        <p class="small text-muted mt-2">Ver reportes y estados de cuenta del club.</p>
+                    <div class="card modulo-card shadow-sm p-3 h-100 text-white">
+                        <i class="bi bi-file-earmark-bar-graph icono-nl1 fs-3 text-white"></i>
+                        <h4 class="text-white mt-2 fs-5">Reportes</h4>
+                        <strong class="text-white">Consultas y saldos</strong>
+                        <p class="small text-white mt-2">Ver reportes y estados de cuenta del club.</p>
                         <a href="#"
                             onclick="alert('El módulo de Reportes estará disponible próximamente.'); return false;"
                             class="stretched-link"></a>
@@ -101,11 +102,11 @@
 
                 <!-- Pagos -->
                 <div class="col-md-4">
-                    <div class="card modulo-card shadow-sm p-3 h-100">
-                        <i class="bi bi-wallet2 icono-nl1 fs-3 text-primary"></i>
-                        <h4 class="text-purple mt-2 fs-5">Pagos</h4>
-                        <strong>Abono de cuentas</strong>
-                        <p class="small text-muted mt-2">Gestiona el registro de pagos y abonos de los asociados.</p>
+                    <div class="card modulo-card shadow-sm p-3 h-100 text-white">
+                        <i class="bi bi-wallet2 icono-nl1 fs-3 text-white"></i>
+                        <h4 class="text-white mt-2 fs-5">Pagos</h4>
+                        <strong class="text-white">Abono de cuentas</strong>
+                        <p class="small text-white mt-2">Gestiona el registro de pagos y abonos de los asociados.</p>
                         <a href="pagos.html" class="stretched-link"></a>
                     </div>
                 </div>
@@ -113,56 +114,54 @@
             </div>
         </div>
 
-        <!-- SECCIÓN ASOCIADO  -->
+        <!-- SECCIÓN ASOCIADO -->
         <div id="seccion-Asociado">
-            <h5 class="mb-4 fw-bold text-dark">Portal del Asociado</h5>
+            <h5 class="mb-4 fw-bold text-white">Portal del Asociado</h5>
             <div class="row g-4" id="tarjetas-Asociado">
 
                 <!-- Mi Perfil -->
                 <div class="col-md-4">
-                    <div class="card modulo-card asociado shadow-sm p-3 h-100">
-                        <i class="bi bi-person-badge icono-nl1 fs-3 text-success"></i>
-                        <h4 class="text-purple mt-2 fs-5">Mi perfil</h4>
-                        <p class="small text-muted mt-2">Consulta tus datos personales y estado de tus préstamos.</p>
+                    <div class="card modulo-card asociado shadow-sm p-3 h-100 text-white">
+                        <i class="bi bi-person-badge icono-nl1 fs-3 text-white"></i>
+                        <h4 class="text-white mt-2 fs-5">Mi perfil</h4>
+                        <p class="small text-white mt-2">Consulta tus datos personales y estado de tus préstamos.</p>
                         <a href="perfil.html" class="stretched-link"></a>
                     </div>
                 </div>
 
                 <!-- Mis Pagos -->
                 <div class="col-md-4">
-                    <div class="card modulo-card asociado shadow-sm p-3 h-100">
-                        <i class="bi bi-receipt icono-nl1 fs-3 text-success"></i>
-                        <h4 class="text-purple mt-2 fs-5">Mis Pagos</h4>
-                        <p class="small text-muted mt-2">Revisa el historial de tus abonos y cuotas pagadas.</p>
+                    <div class="card modulo-card asociado shadow-sm p-3 h-100 text-white">
+                        <i class="bi bi-receipt icono-nl1 fs-3 text-white"></i>
+                        <h4 class="text-white mt-2 fs-5">Mis Pagos</h4>
+                        <p class="small text-white mt-2">Revisa el historial de tus abonos y cuotas pagadas.</p>
                         <a href="pagos.html" class="stretched-link"></a>
                     </div>
                 </div>
 
                 <!-- Mis Actividades -->
                 <div class="col-md-4">
-                    <div class="card modulo-card asociado shadow-sm p-3 h-100">
-                        <i class="bi bi-calendar-check icono-nl1 fs-3 text-success"></i>
-                        <h4 class="text-purple mt-2 fs-5">Actividades</h4>
-                        <p class="small text-muted mt-2">Visualiza las actividades programadas del club.</p>
+                    <div class="card modulo-card asociado shadow-sm p-3 h-100 text-white">
+                        <i class="bi bi-calendar-check icono-nl1 fs-3 text-white"></i>
+                        <h4 class="text-white mt-2 fs-5">Actividades</h4>
+                        <p class="small text-white mt-2">Visualiza las actividades programadas del club.</p>
                         <a href="actividades.html" class="stretched-link"></a>
                     </div>
                 </div>
 
                 <div class="col-md-4">
-                    <div class="card modulo-card asociado shadow-sm p-3 h-100">
-                        <i class="bi bi-sign-intersection-y icono-nl1 fs-3 text-primary"></i>
-                        <h4 class="text-purple mt-2 fs-5">test</h4>
-                        <p class="small text-muted mt-2">pruevas</p>
+                    <div class="card modulo-card asociado shadow-sm p-3 h-100 text-white">
+                        <i class="bi bi-sign-intersection-y icono-nl1 fs-3 text-white"></i>
+                        <h4 class="text-white mt-2 fs-5">test</h4>
+                        <p class="small text-white mt-2">pruevas</p>
                         <a href="../test/test.html" class="stretched-link"></a>
                     </div>
                 </div>
-
 
             </div>
         </div>
 
     </div>
-
 
     <script src="../controler/dashboard.js"></script>
 </body>

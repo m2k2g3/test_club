@@ -1,0 +1,111 @@
+/* Estilos específicos para Mi Perfil */
+body {
+    padding: 20px;
+}
+
+.top-navbar {
+    background: rgba(128, 0, 128, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 25px;
+    color: #ffffff;
+    padding: 14px 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.top-navbar .brand-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+}
+
+.btn-nav-back {
+    background: #ffffff;
+    color: purple;
+    border: none;
+    border-radius: 40px;
+    padding: 7px 16px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.btn-nav-back:hover {
+    background: rgba(255, 255, 255, 0.85);
+    color: purple;
+    transform: translateY(-2px);
+}
+
+.perfil-card {
+    background: rgba(128, 0, 128, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.perfil-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.perfil-icono {
+    width: 58px;
+    height: 58px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.perfil-subtexto {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.perfil-campo {
+    background: rgba(0, 0, 0, 0.22);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px;
+    padding: 10px 16px;
+    color: #ffffff;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+.perfil-pie {
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.btn-perfil-volver {
+    background: #ffffff;
+    color: purple;
+    border: none;
+    border-radius: 40px;
+    padding: 9px 22px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-perfil-volver:hover {
+    background: rgba(255, 255, 255, 0.85);
+    color: purple;
+    transform: translateY(-2px);
+}

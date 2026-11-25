@@ -1,42 +1,49 @@
-/* Estilos principales para Dashboard */
+/* Estilos específicos para Dashboard */
 body {
-    background-image: url('../imagenes/1pixstudio-ai-generated-8008017_1920.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
+    padding: 20px;
+}
+
+.header-mr {
+    background: rgba(128, 0, 128, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 25px;
+    color: #ffffff;
+    padding: 20px 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .icono-nl1 {
     font-size: 3rem;
-    color: #9b0475da;
-}
-
-.header-mr {
-    background-color: #8102ca;
-    color: #ffffff;
-    padding: 20px 30px;
+    color: #fff;
 }
 
 .modulo-card {
-    border-top: 4px solid #850aaa;
-    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-top: 4px solid #e879f9;
+    border-radius: 25px;
     transition: 0.3s;
     cursor: pointer;
     height: 100%;
-    background-color: #ffffff;
+    background: rgba(128, 0, 128, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .modulo-card.asociado {
-    border-top: 4px solid #5b0981c0;
+    border-top: 4px solid #c084fc;
 }
 
 .modulo-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+    background: rgba(128, 0, 128, 0.45);
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
 }
 
 .text-purple {
-    color: #800080;
+    color: #f5d0fe;
 }

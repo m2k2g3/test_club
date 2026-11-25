@@ -1,0 +1,308 @@
+/* ===================================================
+   CLUB FRAMBUESA - ESTILOS PARA REGISTROS / ACTIVIDADES
+   =================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-image: url('../imagenes/1pixstudio-ai-generated-8008017_1920.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-y: auto;
+    color: #ffffff;
+    padding: 20px;
+    padding-bottom: 40px;
+}
+
+/* Cabecera */
+.header-mr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 18px 26px;
+    background: rgba(128, 0, 128, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 25px;
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.header-mr h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+.btn-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 40px;
+    background: #ffffff;
+    color: purple;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-volver:hover {
+    background: rgba(255, 255, 255, 0.85);
+    color: purple;
+    transform: translateY(-2px);
+}
+
+/* Contenedor principal y barra superior */
+.contenedor-principal {
+    max-width: 1200px;
+    margin: 28px auto 0;
+}
+
+.barra-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+    padding: 14px 20px;
+    background: rgba(128, 0, 128, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.descripcion-pagina {
+    margin: 0;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-nueva {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 20px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    background: #ffffff;
+    color: purple;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-nueva:hover {
+    background: rgba(255, 255, 255, 0.85);
+    transform: translateY(-2px);
+}
+
+/* Tarjeta y tabla de actividades */
+.tarjeta-tabla {
+    background: rgba(128, 0, 128, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.tabla-actividades {
+    margin: 0;
+    color: #ffffff;
+    --bs-table-bg: transparent;
+    --bs-table-color: #ffffff;
+    --bs-table-border-color: rgba(255, 255, 255, 0.2);
+    --bs-table-hover-bg: rgba(255, 255, 255, 0.12);
+    --bs-table-hover-color: #ffffff;
+}
+
+.tabla-actividades thead th {
+    background: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    font-weight: bold;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 14px 16px;
+}
+
+.tabla-actividades tbody td {
+    padding: 13px 16px;
+    vertical-align: middle;
+}
+
+.cargando-fila {
+    text-align: center;
+    padding: 24px !important;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Toast de alertas */
+.toast-container {
+    z-index: 1090;
+}
+
+.toast-actividad {
+    background: rgba(75, 2, 97, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 18px;
+    color: #ffffff;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+}
+
+.toast-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+.toast-actividad .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Modal de actividad */
+.modal-actividad {
+    background: rgba(65, 5, 85, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    color: #ffffff;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.55);
+}
+
+.modal-actividad .modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 18px 24px;
+}
+
+.modal-actividad .modal-title {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.modal-actividad .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.modal-actividad .modal-body {
+    padding: 22px 24px;
+}
+
+.campo-grupo {
+    margin-bottom: 16px;
+}
+
+.modal-actividad .form-label {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.modal-actividad .form-control {
+    background: rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    color: #ffffff;
+    padding: 10px 14px;
+}
+
+.modal-actividad .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.modal-actividad .form-control:focus {
+    background: rgba(0, 0, 0, 0.35);
+    border-color: #ffffff;
+    color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+
+.modal-actividad .modal-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 14px 24px;
+    gap: 10px;
+}
+
+.btn-cancelar {
+    padding: 8px 18px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 40px;
+    background: rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.btn-cancelar:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-guardar {
+    padding: 8px 22px;
+    border: none;
+    border-radius: 40px;
+    background: #ffffff;
+    color: purple;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.btn-guardar:hover {
+    background: rgba(255, 255, 255, 0.85);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 14px;
+    }
+
+    .header-mr {
+        padding: 14px 18px;
+    }
+
+    .header-mr h1 {
+        font-size: 1.25rem;
+    }
+
+    .tarjeta-tabla {
+        padding: 10px;
+    }
+}
+
+.toast-actividad.toast-exito {
+    background: rgba(75, 2, 97, 0.94);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.toast-actividad.toast-error {
+    background: rgba(127, 29, 29, 0.94);
+    border-color: rgba(254, 202, 202, 0.5);
+}

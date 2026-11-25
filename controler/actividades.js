@@ -17,7 +17,7 @@ async function solicitarApi(metodo, datos) {
     // 1. Primero validamos si no está autorizado antes de intentar leer JSON
     if (rta.status === 401) {
         window.location.href = "login.html";
-        // return;
+        return;
     }
     // 2. Leemos la respuesta como texto primero por si el servidor devuelve un error de PHP o HTML
     const textoRespuesta = await rta.text();
@@ -53,7 +53,7 @@ async function mostrarActividades() {
         const fila = document.createElement("tr");
         const celda = document.createElement("td");
         celda.colSpan = esAdmin ? 5 : 4;
-        celda.className = "text-center py-4 text-muted";
+        celda.className = "text-center py-4 text-white";
         celda.textContent = "NO hay actividades disponibles.";
         fila.append(celda);
         lsitaActividades.append(fila);
@@ -77,13 +77,13 @@ async function mostrarActividades() {
 
             const bntEditar = document.createElement("button");
             bntEditar.type = "button";
-            bntEditar.className = "btn btn-sm btn-outline-primary me-2";
+            bntEditar.className = "btn btn-sm btn-light me-2 fw-bold";
             bntEditar.innerHTML = '<i class="bi bi-terminal-x"></i>';
             bntEditar.addEventListener("click", () => abrirEditar(actividad));
 
             const bntEliminar = document.createElement("button");
             bntEliminar.type = "button";
-            bntEliminar.className = "btn btn-sm btn-outline-danger me-2";
+            bntEliminar.className = "btn btn-sm btn-danger me-2";
             bntEliminar.innerHTML = '<i class="bi bi-chevron-bar-contract"></i>';
             bntEliminar.addEventListener("click", () => eliminarActividad(actividad));
 

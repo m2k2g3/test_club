@@ -1,0 +1,18 @@
+/* ===================================================
+   CLUB FRAMBUESA - ESTILOS GLOBALES
+   =================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    min-height: 100vh;
+    overflow-y: auto;
+    color: #ffffff;
+    background: url('../../imagenes/1pixstudio-ai-generated-8008017_1920.jpg') no-repeat center center / cover;
+    background-attachment: fixed;
+}

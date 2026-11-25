@@ -1,18 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
-}
-
+/* Estilos específicos para Login */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    overflow-y: auto;
     padding: 20px;
-    background: url('../imagenes/1pixstudio-ai-generated-8008017_1920.jpg') no-repeat center center/cover;
 }
 
 .login-card,
@@ -30,14 +21,14 @@ body {
 .login-card h2,
 .aaaaa h2 {
     font-size: 28px;
-    text-align: center; 
+    text-align: center;
     margin-bottom: 25px;
     letter-spacing: 1px;
 }
 
-.login-card .user, 
+.login-card .user,
 .aaaaa .user,
-.login-card .password, 
+.login-card .password,
 .aaaaa .password {
     width: 100%;
     height: 50px;
