@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es-co">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asociados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/EstilosGLobales/global.css">
+    <link rel="stylesheet" href="../assets/css/Registros_actividades.css">
+</head>
+
+<body>
+    <header class="header-mr">
+        <h1>Lista de asocidos</h1>
+        <button type="button" class="btn-volver-dashboard" onclick="window.location.href='registro.html'">
+            <i class="bi bi-arrow-left"></i> Crear un Asociado
+        </button>
+
+        <button type="button" class="btn-volver-dashboard" onclick="window.location.href='dashboard.html'">
+            <i class="bi bi-arrow-left"></i> Volver al panel
+        </button>
+    </header>
+
+    <main class="contenedor-principal">
+        <div class="barra-acciones">
+            <p class="descripcion-pagina">
+                Consulta y administra los asociados registrados en el club.
+            </p>
+        </div>
+
+        <div class="tarjeta-tabla">
+            <div class="table-responsive">
+                <table class="table tabla-actividades">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Fecha nacimiento</th>
+                            <th scope="col">Género</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Ciudad</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Rol</th>
+                            <th id="encabezadoAcciones" scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaAsociados">
+                        <tr>
+                            <td colspan="12" class="cargando-fila">
+                                Cargando asociados...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast-container">
+        <div id="toastAsociado" class="toast toast-actividad" role="status" aria-live="polite" aria-atomic="true">
+            <div class="toast-contenido">
+                <div id="mensajeAsociados" class="toast-body"></div>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Asociado -->
+    <div class="modal fade" id="modalAsociado" tabindex="-1" aria-labelledby="tituloModalAsociado" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-actividad">
+                <form id="formAsociado">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="tituloModalAsociado">Editar asociado</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="hidden" id="idAsociado" name="idAsociado" />
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="documento" class="form-label">Documento</label>
+                                <input type="text" class="form-control" id="documento" name="documento" maxlength="30" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                                <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="nombres" class="form-label">Nombres</label>
+                                <input type="text" class="form-control" id="nombres" name="nombres" maxlength="100" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="apellidos" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="apellidos" name="apellidos" maxlength="100" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="genero" class="form-label">Género</label>
+                                <select class="form-control" id="genero" name="genero" required>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="telefono" class="form-label">Teléfono</label>
+                                <input type="text" class="form-control" id="telefono" name="telefono" maxlength="30" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="direccionResidencia" class="form-label">Dirección de residencia</label>
+                                <input type="text" class="form-control" id="direccionResidencia" name="direccionResidencia" maxlength="150" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="ciudad" class="form-label">Ciudad</label>
+                                <input type="text" class="form-control" id="ciudad" name="ciudad" maxlength="80" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="email" name="email" maxlength="120" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="rol" class="form-label">Rol</label>
+                                <select class="form-control" id="rol" name="rol" required>
+                                    <option value="asociado">asociado</option>
+                                    <option value="admin">admin</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="clave" class="form-label">Nueva contraseña (opcional, dejar vacío para mantener)</label>
+                                <input type="password" class="form-control" id="clave" name="clave" placeholder="••••••••">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn-guardar">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../controler/modalAsociado.js"></script>
+    <script src="../controler/listAsociado.js"></script>
+    
+</body>
+
+</html>
