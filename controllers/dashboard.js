@@ -38,21 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Función que destruye la sesión en el servidor y limpia el navegador
     async function cerrarSesion() {
         try {
-            const respuesta = await fetch("../model/cerrarsession.php", { 
+            await fetch("../api/api_logout.php", { 
                 method: "POST",
                 headers: { "Content-Type": "application/json" }
             });
-
-            if (!respuesta.ok) {
-                console.warn("El servidor respondió con error al cerrar sesión.");
-            }
         } catch (error) {
-            console.error("Error de red al cerrar sesión en el servidor:", error);
+            console.error("Error al cerrar sesión en el servidor:", error);
         } finally {
-            // Se limpia el almacenamiento local y se redirige pase lo que pase
             localStorage.clear();
             window.location.href = 'login.html';
         }

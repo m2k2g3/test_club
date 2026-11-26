@@ -1,7 +1,8 @@
 <?php
-// gestionActividades.php
 session_start();
 header("Content-Type: application/json; charset=UTF-8");
+
+require_once __DIR__ . "/../models/Actividad.php";
 
 function leerDatos()
 {
@@ -24,9 +25,7 @@ function validarActividades(array $datos): array
         || !is_string($municipio) || trim($municipio) === "" || strlen($municipio) > 50
     ) {
         http_response_code(400);
-        throw new Exception(
-            "ingrese un nobre y municipio validos"
-        );
+        throw new Exception("Ingrese un nombre y municipio válidos");
     }
 
     $f = is_string($fecha) ? DateTime::createFromFormat('Y-m-d', $fecha) : false;
@@ -37,8 +36,8 @@ function validarActividades(array $datos): array
 
     return [
         "nombreActividad" => trim($nombre),
-        "fechaEvento" => $fecha,
-        "municipio" => trim($municipio)
+        "fechaEvento"     => $fecha,
+        "municipio"       => trim($municipio)
     ];
 }
 
@@ -47,9 +46,7 @@ function validarID($id): int
     $idActividad = filter_var($id, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]]);
     if ($idActividad === false) {
         http_response_code(400);
-        throw new Exception(
-            "ID no valido"
-        );
+        throw new Exception("ID no válido");
     }
     return $idActividad;
 }
@@ -57,30 +54,29 @@ function validarID($id): int
 try {
     if (!isset($_SESSION["email"], $_SESSION["rol"])) {
         http_response_code(401);
-        throw new Exception("Inciar sesion para consultar las actividades");
+        throw new Exception("Inicie sesión para consultar las actividades");
     }
 
     $metodo = $_SERVER["REQUEST_METHOD"];
 
     if (!in_array($metodo, ["GET", "POST", "PUT", "DELETE"], true)) {
         http_response_code(405);
-        throw new Exception("Metodo HTTP no permitido");
+        throw new Exception("Método HTTP no permitido");
     }
 
     if ($metodo !== "GET" && $_SESSION["rol"] !== "admin") {
         http_response_code(403);
-        throw new Exception("No tienes permisos para realizar esta accion");
+        throw new Exception("No tienes permisos para realizar esta acción");
     }
 
-    require_once __DIR__ . "/actividad.php";
-    $actividad = new actividad();
+    $actividad = new Actividad();
     $resultado = [];
 
     switch ($metodo) {
         case "GET":
             $resultado = [
-                "success" => true,
-                "rol" => $_SESSION["rol"],
+                "success"     => true,
+                "rol"         => $_SESSION["rol"],
                 "actividades" => $actividad->obtenerActividades()
             ];
             http_response_code(200);
@@ -99,16 +95,17 @@ try {
 
         case "PUT":
             $datos = leerDatos();
-            $datos["idActividad"] = validarID($datos["idActividad"]) ?? null;
+            $datos["idActividad"] = validarID($datos["idActividad"] ?? null);
             $datos = array_merge($datos, validarActividades($datos));
 
             if (!$actividad->editar($datos)) {
                 http_response_code(404);
-                throw new Exception("no se encontro la actividad :<");
+                throw new Exception("No se encontró la actividad para editar.");
             }
             $resultado = [
                 "success" => true,
-                "mensaje" => "Actividad actualizada correctamente :>"
+                "mensaje" => "Actividad actualizada correctamente.",
+                "message" => "Actividad actualizada correctamente."
             ];
             break;
 
@@ -118,29 +115,31 @@ try {
 
             if (!$actividad->eliminar($idActividad)) {
                 http_response_code(404);
-                throw new Exception("no se encontro la activida :<");
+                throw new Exception("No se encontró la actividad para eliminar.");
             }
             $resultado = [
                 "success" => true,
-                "mensaje" => "Actividad se elimino correctamente :>",
-                
+                "mensaje" => "Actividad eliminada correctamente.",
+                "message" => "Actividad eliminada correctamente."
             ];
             break;
     }
     echo json_encode($resultado);
 } catch (PDOException $e) {
-    error_log("gestionActividades.php: " . $e->getMessage());
+    error_log("api_actividades.php: " . $e->getMessage());
     http_response_code(500);
     echo json_encode([
         "success" => false,
-        "message" => "Error en la base de datos: " . $e->getMessage()
+        "message" => "Error en la base de datos: " . $e->getMessage(),
+        "mensaje" => "Error en la base de datos: " . $e->getMessage()
     ]);
-} catch (Exception $e) {
-     if (http_response_code() === 200) {
+} catch (Throwable $e) {
+    if (http_response_code() === 200) {
         http_response_code(500);
     }
     echo json_encode([
         "success" => false,
-        "message" => $e->getMessage()
+        "message" => $e->getMessage(),
+        "mensaje" => $e->getMessage()
     ]);
 }

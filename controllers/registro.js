@@ -2,17 +2,14 @@ const form = document.getElementById("FormRegistro");
 
 if (form) {
     form.addEventListener("submit", async function (event) {
-        // Evitar que se recargue la página al enviar el formulario
         event.preventDefault();
 
         const btnGuardar = form.querySelector("button[type='submit']");
         const mensajeP = document.getElementById("mensaje_registro");
 
-        // 1. Obtener los valores de los inputs de contraseña
         const clave = form.querySelector("#clave").value;
         const claveConfirmar = form.querySelector("#clave-confirmar").value;
 
-        // 2. Definir las reglas de validación de la contraseña
         const reglas = [
             { ok: clave.length >= 8, msg: "La contraseña debe tener al menos 8 caracteres." },
             { ok: /[a-z]/.test(clave), msg: "La contraseña debe incluir al menos una letra minúscula." },
@@ -22,7 +19,6 @@ if (form) {
             { ok: clave === claveConfirmar, msg: "Las contraseñas no coinciden." }
         ];
 
-        // 3. Buscar la primera regla que falle
         const fallo = reglas.find(r => !r.ok);
         if (fallo) {
             if (mensajeP) {
@@ -33,16 +29,12 @@ if (form) {
                 mensajeP.style.textAlign = "center";
                 mensajeP.style.marginTop = "12px";
             }
-            return; // Detiene el envío si no cumple las reglas
+            return;
         }
 
-        // 4. Preparar los datos del formulario si las contraseñas son válidas
         const asociado = Object.fromEntries(new FormData(form).entries());
-
-        // Eliminar 'clave-confirmar' antes de enviarlo al servidor
         delete asociado['clave-confirmar'];
 
-        // Desactivar el botón mientras se procesa la solicitud
         if (btnGuardar) btnGuardar.disabled = true;
 
         if (mensajeP) {
@@ -52,7 +44,7 @@ if (form) {
         }
 
         try {
-            const urlDestino = form.action || "../model/guardar_asociados.php";
+            const urlDestino = form.action || "../api/api_registro.php";
             const response = await fetch(urlDestino, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -76,7 +68,6 @@ if (form) {
 
                 form.reset();
 
-                // Redirigir al inicio de sesión tras 2 segundos
                 setTimeout(() => {
                     window.location.href = "login.html";
                 }, 2000);
@@ -88,7 +79,7 @@ if (form) {
             }
 
         } catch (error) {
-            console.error("Error al guardar el asociado:", error);
+            console.error("Error al registrar el asociado:", error);
             if (mensajeP) {
                 mensajeP.textContent = "Ocurrió un error al comunicarse con el servidor.";
                 mensajeP.dataset.tipo = "error";
